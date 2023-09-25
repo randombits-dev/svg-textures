@@ -3,5 +3,14 @@
     import ImageRenderer from "./ImageRenderer.svelte";
 </script>
 
-<ControlContainer/>
-<ImageRenderer/>
+<div class="flex">
+    <ControlContainer/>
+    <ImageRenderer/>
+
+</div>
+
+<style>
+    .flex {
+        display: flex;
+    }
+</style>
