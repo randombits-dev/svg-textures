@@ -15,6 +15,13 @@
 
     $:selectedHueHex = hsv2hex(selectedHue, 1, 1);
 
+    $: {
+        if (selectEl && circleEl) {
+            circleEl.style.top = selectEl.clientHeight * (1 - selectedV) + 'px';
+            circleEl.style.left = selectEl.clientWidth * selectedS + 'px';
+        }
+    }
+
     const handleMouseDown = (e: MouseEvent) => {
         e.preventDefault();
         handleMouseMove(e);

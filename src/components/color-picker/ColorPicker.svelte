@@ -11,7 +11,7 @@
 
 <script lang="ts">
     import HuePicker from "./HuePicker.svelte";
-    import SLPicker from "./SLPicker.svelte";
+    import SLPicker from "./SVPicker.svelte";
     import {hex2hsv} from "../../utils/color-utils.js";
 
     let selectedHue = 0;
