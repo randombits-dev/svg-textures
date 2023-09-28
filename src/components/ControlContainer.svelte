@@ -4,7 +4,8 @@
     import BlurSlider from "./controls/BlurSlider.svelte";
     import ShadowSlider from "./controls/ShadowSlider.svelte";
     import Accordion from "./common/Accordion.svelte";
-    import ColorPicker from "./color-picker/ColorPicker.svelte";
+    import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
+    import FillColorPicker from "./controls/FillColorPicker.svelte";
     // import type {Settings} from "../model/settings.ts";
 
     // let textureValue: string;
@@ -19,7 +20,10 @@
 
     <TextureSelect/>
     <Accordion title="Background">
-        <ColorPicker/>
+        <BackgroundColorPicker/>
+    </Accordion>
+    <Accordion title="Fill">
+        <FillColorPicker/>
     </Accordion>
     <Accordion title="Turbulence">
         <TurbulenceSlider/>

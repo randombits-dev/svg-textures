@@ -15,7 +15,7 @@ const initialValue: ColorValue = {
     v: 0.5
 };
 
-const createColorPickerStore = () => {
+export const createColorPickerStore = () => {
     const {subscribe, set, update} = writable<ColorValue>(initialValue);
 
     const setHex = (hex: string) => {
@@ -45,4 +45,5 @@ const createColorPickerStore = () => {
     };
 };
 
-export const colorPickerStore = createColorPickerStore();
+// export const backgroundColorStore = createColorPickerStore();
+// export const foregroundColorStore = createColorPickerStore();

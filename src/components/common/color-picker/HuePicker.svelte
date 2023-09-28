@@ -3,14 +3,15 @@
 </div>
 
 <script lang="ts">
-    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
-    import {onMount} from "svelte";
+    import {getContext, onMount} from "svelte";
 
     let circleEl: HTMLDivElement;
     let parentEl: HTMLDivElement;
 
+    const store = getContext('store') as any;
+
     onMount(() => {
-        return colorPickerStore.subscribe(value => {
+        return store.subscribe(value => {
             circleEl.style.left = (value.h * parentEl.clientWidth) + 'px';
         });
     });
@@ -24,7 +25,7 @@
 
     const handleMouseMove = (e: MouseEvent) => {
         const x = Math.max(0, Math.min(parentEl.clientWidth, e.clientX - parentEl.offsetLeft));
-        colorPickerStore.setHue(x / parentEl.clientWidth);
+        store.setHue(x / parentEl.clientWidth);
     };
 
     const handleMouseUp = (e: MouseEvent) => {

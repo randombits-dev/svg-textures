@@ -3,15 +3,15 @@
 </div>
 
 <script lang="ts">
-    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
-    import {hsv2hex} from "../../utils/color-utils.ts";
-    import {onMount} from "svelte";
+    import {hsv2hex} from "../../../utils/color-utils.ts";
+    import {getContext, onMount} from "svelte";
 
     let selectEl: HTMLDivElement;
     let circleEl: HTMLDivElement;
+    const store = getContext('store') as any;
 
     onMount(() => {
-        return colorPickerStore.subscribe((value) => {
+        return store.subscribe((value) => {
             circleEl.style.top = ((1 - value.v) * selectEl.clientHeight) + 'px';
             circleEl.style.left = (value.s * selectEl.clientWidth) + 'px';
             selectEl.style.backgroundColor = hsv2hex(value.h, 1, 1);
@@ -28,7 +28,7 @@
     const handleMouseMove = (e: MouseEvent) => {
         const y = Math.max(0, Math.min(selectEl.clientHeight, e.clientY - selectEl.offsetTop));
         const x = Math.max(0, Math.min(selectEl.clientWidth, e.clientX - selectEl.offsetLeft));
-        colorPickerStore.setSV(x / selectEl.clientWidth, 1 - y / selectEl.clientHeight);
+        store.setSV(x / selectEl.clientWidth, 1 - y / selectEl.clientHeight);
     };
 
     const handleMouseUp = (e: MouseEvent) => {

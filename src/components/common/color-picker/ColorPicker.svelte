@@ -9,18 +9,14 @@
 
 <script lang="ts">
     import SLPicker from "./SVPicker.svelte";
-    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
     import HuePicker from "./HuePicker.svelte";
-    import {onDestroy} from "svelte";
-    import {settingsStore} from "../../stores/settingsStore.ts";
+    import {getContext, onDestroy} from "svelte";
 
-    const {backgroundColor} = settingsStore;
-
+    const store = getContext('store') as any;
     let hexValue: string;
 
-    const unsubscribe = colorPickerStore.subscribe((value) => {
+    const unsubscribe = store.subscribe((value) => {
         hexValue = value.hex;
-        backgroundColor.set(value.hex);
     });
     onDestroy(() => {
         unsubscribe();
@@ -28,7 +24,7 @@
 
     const handleHexChange = (e: Event) => {
         const target = e.target as HTMLInputElement;
-        colorPickerStore.setHex(target.value);
+        store.setHex(target.value);
     };
 
 </script>
