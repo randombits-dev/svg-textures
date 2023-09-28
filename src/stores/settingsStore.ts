@@ -7,8 +7,9 @@ const createSettingsStore = () => {
     const dropShadowX = writable(1);
     const dropShadowY = writable(1);
     const dropShadowBlur = writable(0);
+    const backgroundColor = writable('#ffffff');
 
-    return {turbulence, turbulenceScale, blur, dropShadowX, dropShadowY, dropShadowBlur};
+    return {turbulence, turbulenceScale, blur, dropShadowX, dropShadowY, dropShadowBlur, backgroundColor};
 };
 
 export const settingsStore = createSettingsStore();

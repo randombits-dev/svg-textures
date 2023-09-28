@@ -8,7 +8,7 @@
 
 
 <script lang="ts">
-    import {settingsStore} from "../stores/settingsStore.ts";
+    import {settingsStore} from "../../stores/settingsStore.ts";
 
     const {blur} = settingsStore;
 </script>

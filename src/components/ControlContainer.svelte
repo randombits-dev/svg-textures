@@ -1,9 +1,9 @@
 <script lang="ts">
-    import TurbulenceSlider from "./TurbulenceSlider.svelte";
-    import TextureSelect from "./TextureSelect.svelte";
-    import BlurSlider from "./BlurSlider.svelte";
-    import ShadowSlider from "./ShadowSlider.svelte";
-    import Accordion from "./Accordion.svelte";
+    import TurbulenceSlider from "./controls/TurbulenceSlider.svelte";
+    import TextureSelect from "./controls/TextureSelect.svelte";
+    import BlurSlider from "./controls/BlurSlider.svelte";
+    import ShadowSlider from "./controls/ShadowSlider.svelte";
+    import Accordion from "./common/Accordion.svelte";
     import ColorPicker from "./color-picker/ColorPicker.svelte";
     // import type {Settings} from "../model/settings.ts";
 
@@ -18,7 +18,9 @@
 <div class="control-container">
 
     <TextureSelect/>
-    <ColorPicker/>
+    <Accordion title="Background">
+        <ColorPicker/>
+    </Accordion>
     <Accordion title="Turbulence">
         <TurbulenceSlider/>
     </Accordion>

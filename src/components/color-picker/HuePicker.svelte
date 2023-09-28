@@ -3,9 +3,17 @@
 </div>
 
 <script lang="ts">
+    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
+    import {onMount} from "svelte";
+
     let circleEl: HTMLDivElement;
     let parentEl: HTMLDivElement;
-    export let selectedColor: number;
+
+    onMount(() => {
+        return colorPickerStore.subscribe(value => {
+            circleEl.style.left = (value.h * parentEl.clientWidth) + 'px';
+        });
+    });
 
     const handleMouseDown = (e: MouseEvent) => {
         e.preventDefault();
@@ -16,22 +24,13 @@
 
     const handleMouseMove = (e: MouseEvent) => {
         const x = Math.max(0, Math.min(parentEl.clientWidth, e.clientX - parentEl.offsetLeft));
-        selectedColor = x / parentEl.clientWidth;
-
-        circleEl.style.left = x + 'px';
+        colorPickerStore.setHue(x / parentEl.clientWidth);
     };
 
     const handleMouseUp = (e: MouseEvent) => {
         window.removeEventListener('mousemove', handleMouseMove);
         window.removeEventListener('mouseup', handleMouseUp);
     };
-
-    $:{
-        if (circleEl) {
-            circleEl.style.left = selectedColor * parentEl.clientWidth + 'px';
-
-        }
-    }
 
 </script>
 

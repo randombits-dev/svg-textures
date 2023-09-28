@@ -46,10 +46,9 @@ export const hsv2hex = (h: number, s: number, v: number) => {
 
 const rbg2hsv = ([rHex, gHex, bHex]: number[]): number[] => {
     const r = rHex / 255, g = gHex / 255, b = bHex / 255;
-    console.log('rbg2hsv', r, g, b);
     let v = Math.max(r, g, b), c = v - Math.min(r, g, b);
     let h = c && ((v == r) ? (g - b) / c : ((v == g) ? 2 + (b - r) / c : 4 + (r - g) / c));
-    return [60 * (h < 0 ? h + 6 : h), v && c / v, v];
+    return [(60 * (h < 0 ? h + 6 : h)) / 360, v && c / v, v];
 };
 
 const hexToRgb = (hex: string) => {

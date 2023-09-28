@@ -7,7 +7,7 @@
 </ControlSection>
 
 <script lang="ts">
-    import {textureStore} from "../stores/textureStore.ts";
+    import {textureStore} from "../../stores/textureStore.ts";
     import ControlSection from "./ControlSection.svelte";
 
     export let value = '1.svg';

@@ -16,7 +16,7 @@
 
 
 <script lang="ts">
-    import {settingsStore} from "../stores/settingsStore.ts";
+    import {settingsStore} from "../../stores/settingsStore.ts";
 
     const {dropShadowX, dropShadowY, dropShadowBlur} = settingsStore;
 </script>

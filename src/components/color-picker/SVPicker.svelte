@@ -1,26 +1,22 @@
-<div class="color-select" bind:this={selectEl} on:mousedown={handleMouseDown} style:background-color={selectedHueHex}>
+<div class="color-select" bind:this={selectEl} on:mousedown={handleMouseDown}>
     <div class="color-circle" bind:this={circleEl}></div>
 </div>
 
 <script lang="ts">
+    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
     import {hsv2hex} from "../../utils/color-utils.ts";
+    import {onMount} from "svelte";
 
     let selectEl: HTMLDivElement;
     let circleEl: HTMLDivElement;
 
-    export let selectedV: number;
-    export let selectedS: number;
-
-    export let selectedHue: number;
-
-    $:selectedHueHex = hsv2hex(selectedHue, 1, 1);
-
-    $: {
-        if (selectEl && circleEl) {
-            circleEl.style.top = selectEl.clientHeight * (1 - selectedV) + 'px';
-            circleEl.style.left = selectEl.clientWidth * selectedS + 'px';
-        }
-    }
+    onMount(() => {
+        return colorPickerStore.subscribe((value) => {
+            circleEl.style.top = ((1 - value.v) * selectEl.clientHeight) + 'px';
+            circleEl.style.left = (value.s * selectEl.clientWidth) + 'px';
+            selectEl.style.backgroundColor = hsv2hex(value.h, 1, 1);
+        });
+    });
 
     const handleMouseDown = (e: MouseEvent) => {
         e.preventDefault();
@@ -32,10 +28,7 @@
     const handleMouseMove = (e: MouseEvent) => {
         const y = Math.max(0, Math.min(selectEl.clientHeight, e.clientY - selectEl.offsetTop));
         const x = Math.max(0, Math.min(selectEl.clientWidth, e.clientX - selectEl.offsetLeft));
-        selectedS = x / selectEl.clientWidth;
-        selectedV = 1 - y / selectEl.clientHeight;
-        circleEl.style.top = y + 'px';
-        circleEl.style.left = x + 'px';
+        colorPickerStore.setSV(x / selectEl.clientWidth, 1 - y / selectEl.clientHeight);
     };
 
     const handleMouseUp = (e: MouseEvent) => {

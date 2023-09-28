@@ -11,7 +11,7 @@
 </div>
 
 <script lang="ts">
-    import AngleIcon from "../icons/AngleIcon.svelte";
+    import AngleIcon from "../../icons/AngleIcon.svelte";
 
     let open = false;
     export let title: string = '';

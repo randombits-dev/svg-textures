@@ -1,32 +1,35 @@
-<!--<div bind:this={pickerEl}>Open picker</div>-->
-
 <div>
-    <HuePicker bind:selectedColor={selectedHue}/>
-    <SLPicker bind:selectedV={selectedV} bind:selectedS={selectedS} selectedHue={selectedHue}/>
+    <HuePicker/>
+    <SLPicker/>
     <div class="output">
-        <input type="text" class="output-hex" bind:value={hexValue}/>
+        <input type="text" class="output-hex" value={hexValue} on:input={handleHexChange}/>
         <div class="output-sample" style:background-color={hexValue}></div>
     </div>
 </div>
 
 <script lang="ts">
-    import HuePicker from "./HuePicker.svelte";
     import SLPicker from "./SVPicker.svelte";
-    import {hex2hsv} from "../../utils/color-utils.js";
+    import {colorPickerStore} from "../../stores/colorPickerStore.ts";
+    import HuePicker from "./HuePicker.svelte";
+    import {onDestroy} from "svelte";
+    import {settingsStore} from "../../stores/settingsStore.ts";
 
-    let selectedHue = 0;
-    let selectedV = 0.5;
-    let selectedS = 0.5;
-    let hexValue = "#ff0000";
+    const {backgroundColor} = settingsStore;
 
-    // $:hexValue = hsv2hex(selectedHue, selectedS, selectedV);
+    let hexValue: string;
 
-    $:{
-        const [newHue, newS, newV] = hex2hsv(hexValue);
-        if (newHue !== selectedHue) selectedHue = newHue / 360;
-        if (newS !== selectedS) selectedS = newS;
-        if (newV !== selectedV) selectedV = newV;
-    }
+    const unsubscribe = colorPickerStore.subscribe((value) => {
+        hexValue = value.hex;
+        backgroundColor.set(value.hex);
+    });
+    onDestroy(() => {
+        unsubscribe();
+    });
+
+    const handleHexChange = (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        colorPickerStore.setHex(target.value);
+    };
 
 </script>
 

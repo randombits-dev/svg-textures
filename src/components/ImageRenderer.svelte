@@ -1,5 +1,5 @@
 <div class="image-output">
-    <svg viewBox="0 0 1000 500">
+    <svg viewBox="0 0 1000 500" style:--svg-background-color={$backgroundColor}>
         <defs>
             <filter id="f1" x="0" y="0">
                 <feTurbulence
@@ -31,7 +31,7 @@
     import {textureStore} from "../stores/textureStore.ts";
     import {settingsStore} from "../stores/settingsStore.ts";
 
-    const {turbulence, turbulenceScale, blur, dropShadowX, dropShadowY, dropShadowBlur} = settingsStore;
+    const {turbulence, turbulenceScale, blur, dropShadowX, dropShadowY, dropShadowBlur, backgroundColor} = settingsStore;
 </script>
 
 <style>
@@ -44,5 +44,6 @@
         height: 500px;
         fill: #000 !important;
         fill-opacity: 0.3;
+        background-color: var(--svg-background-color);
     }
 </style>
