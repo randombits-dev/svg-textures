@@ -4,19 +4,20 @@
         <option value="1.svg">One</option>
         <option value="2.svg">Two</option>
     </select>
+    <button on:click={generateBlob}>Generate</button>
 </ControlSection>
 
 <script lang="ts">
-    import {textureStore} from "../../stores/textureStore.ts";
-    import ControlSection from "./ControlSection.svelte";
+  import {textureStore} from "../../stores/textureStore.ts";
+  import ControlSection from "./ControlSection.svelte";
 
-    export let value = '1.svg';
+  export let value = '1.svg';
 
-    const {changeTexture} = textureStore;
+  const {changeTexture, generateBlob} = textureStore;
 
-    $: {
-        changeTexture(value);
-    }
+  $: {
+    changeTexture(value);
+  }
 </script>
 
 <style>

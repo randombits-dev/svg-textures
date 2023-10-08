@@ -24,16 +24,28 @@
             <filter id="f3" x="0" y="0">
                 <feDropShadow dx={$dropShadowX} dy={$dropShadowY} stdDeviation={$dropShadowBlur}/>
             </filter>
+
+            <filter id='noiseFilter'>
+                <feTurbulence
+                        type='fractalNoise'
+                        baseFrequency='0.5'
+                        numOctaves='2'
+                        stitchTiles='stitch'/>
+            </filter>
         </defs>
         <g filter="url(#f1) url(#f2) url(#f3)">{@html $textureStore}</g>
+
+
+        <!--        <rect width='100%' height='100%' fill="red"/>-->
+        <!--        <rect width='100%' height='100%' filter='url(#noiseFilter)'/>-->
         <!--    <use xlink:href={`/${settings?.texture}#main`} filter="url(#f1) url(#f2)"/>-->
     </svg>
 </div>
 
 
 <script lang="ts">
-  import {textureStore} from "../stores/textureStore.ts";
   import {settingsStore} from "../stores/settingsStore.ts";
+  import {textureStore} from "../stores/textureStore.ts";
 
   const {
     turbulence,
@@ -46,6 +58,7 @@
     fillColor,
     fillOpacity
   } = settingsStore;
+
 </script>
 
 <style>
