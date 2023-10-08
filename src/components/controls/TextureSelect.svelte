@@ -4,7 +4,6 @@
         <option value="1.svg">One</option>
         <option value="2.svg">Two</option>
     </select>
-    <button on:click={generateBlob}>Generate</button>
 </ControlSection>
 
 <script lang="ts">
@@ -13,7 +12,7 @@
 
   export let value = '1.svg';
 
-  const {changeTexture, generateBlob} = textureStore;
+  const {changeTexture} = textureStore;
 
   $: {
     changeTexture(value);

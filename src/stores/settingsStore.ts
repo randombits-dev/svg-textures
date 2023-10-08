@@ -7,9 +7,11 @@ const createSettingsStore = () => {
   const dropShadowX = writable(0);
   const dropShadowY = writable(0);
   const dropShadowBlur = writable(0);
-  const backgroundColor = writable('#ffffff');
-  const fillColor = writable('#ffffff');
+  const backgroundColor = writable('#111111');
+  const fillColor = writable('#506f9e');
   const fillOpacity = writable('1');
+  const blobDensity = writable(0.2);
+  const blobSize = writable(30);
 
   return {
     turbulence,
@@ -20,7 +22,9 @@ const createSettingsStore = () => {
     dropShadowBlur,
     backgroundColor,
     fillColor,
-    fillOpacity
+    fillOpacity,
+    blobDensity,
+    blobSize
   };
 };
 

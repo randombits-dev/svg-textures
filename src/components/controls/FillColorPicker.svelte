@@ -11,7 +11,7 @@
 
   const {fillColor, fillOpacity} = settingsStore;
 
-  const store = createColorPickerStore();
+  const store = createColorPickerStore($fillColor);
   setContext('store', store);
 
   store.subscribe((value) => {

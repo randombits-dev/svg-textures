@@ -1,24 +1,28 @@
 <script lang="ts">
-    import TurbulenceSlider from "./controls/TurbulenceSlider.svelte";
-    import TextureSelect from "./controls/TextureSelect.svelte";
-    import BlurSlider from "./controls/BlurSlider.svelte";
-    import ShadowSlider from "./controls/ShadowSlider.svelte";
-    import Accordion from "./common/Accordion.svelte";
-    import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
-    import FillColorPicker from "./controls/FillColorPicker.svelte";
-    // import type {Settings} from "../model/settings.ts";
+  import TurbulenceSlider from "./controls/TurbulenceSlider.svelte";
+  import TextureSelect from "./controls/TextureSelect.svelte";
+  import BlurSlider from "./controls/BlurSlider.svelte";
+  import ShadowSlider from "./controls/ShadowSlider.svelte";
+  import Accordion from "./common/Accordion.svelte";
+  import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
+  import FillColorPicker from "./controls/FillColorPicker.svelte";
+  import BlobSlider from "./controls/BlobSlider.svelte";
+  // import type {Settings} from "../model/settings.ts";
 
-    // let textureValue: string;
-    // export let settings: Settings = {};
-    //
-    // $: {
-    //     settings.texture = textureValue;
-    // }
+  // let textureValue: string;
+  // export let settings: Settings = {};
+  //
+  // $: {
+  //     settings.texture = textureValue;
+  // }
 </script>
 
 <div class="control-container">
 
     <TextureSelect/>
+    <Accordion title="Blob">
+        <BlobSlider/>
+    </Accordion>
     <Accordion title="Background">
         <BackgroundColorPicker/>
     </Accordion>
