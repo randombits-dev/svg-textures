@@ -10,6 +10,7 @@
 <button on:click={handleCircleGeneration}>Generate Circle</button>
 <button on:click={handleRectGeneration}>Generate Rect</button>
 <button on:click={handleLineGeneration}>Generate Lines</button>
+<button on:click={handleSquiggleGeneration}>Generate Squiggle</button>
 
 
 <script lang="ts">
@@ -19,6 +20,7 @@
   import {generateCircles} from "../../utils/circle-gen.ts";
   import {generateRects} from "../../utils/rect-gen.ts";
   import {generateLines} from "../../utils/line-gen.ts";
+  import {generateSquiggle} from "../../utils/squiggle-gen.ts";
 
   const {set} = textureStore;
   const {blobDensity, blobSize} = settingsStore;
@@ -37,6 +39,10 @@
 
   const handleLineGeneration = () => {
     set(generateLines({density: $blobDensity, size: $blobSize, height: 500, width: 1000}).join(''));
+  };
+
+  const handleSquiggleGeneration = () => {
+    set(generateSquiggle({density: $blobDensity, size: $blobSize, height: 500, width: 1000}));
   };
 </script>
 

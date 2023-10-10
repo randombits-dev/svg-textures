@@ -1,28 +1,29 @@
+import {randomNumberBetween} from "./random.ts";
+import {svgHeight, svgWidth} from "./svg-size.ts";
+
 let randomX: number;
 let randomY: number;
 
 type GenerateBlob = {
   size: number,
-  width: number,
-  height: number
 }
 
 type GenerateBlobs = GenerateBlob & {
   density: number
 };
 
-export const generateBlobs = ({density, size, width, height}: GenerateBlobs) => {
+export const generateBlobs = ({density, size}: GenerateBlobs) => {
   const paths = [];
-  const count = ((width * height) / (size)) * density;
+  const count = ((svgWidth * svgHeight) / (size)) * density;
   for (let i = 0; i < count; i++) {
-    paths.push(generateBlob({size, width, height}));
+    paths.push(generateBlob({size}));
   }
   return paths;
 };
 
-export const generateBlob = ({size, width, height}: GenerateBlob) => {
-  randomX = randomNumberBetween(-25, width);
-  randomY = randomNumberBetween(-50, height);
+export const generateBlob = ({size}: GenerateBlob) => {
+  randomX = randomNumberBetween(-25, svgWidth);
+  randomY = randomNumberBetween(-50, svgHeight);
   // const size = randomNumberBetween(size/2, size*2);
   // const growth = randomNumberBetween(2, 8);
   // const edges = randomNumberBetween(3, 5);
@@ -32,9 +33,6 @@ export const generateBlob = ({size, width, height}: GenerateBlob) => {
   return `<path d="${path}"></path>`;
 };
 
-const randomNumberBetween = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
 
 const _toRad = (deg: number) => deg * (Math.PI / 180.0);
 

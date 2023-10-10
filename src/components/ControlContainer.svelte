@@ -7,6 +7,7 @@
   import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
   import FillColorPicker from "./controls/FillColorPicker.svelte";
   import BlobSlider from "./controls/BlobSlider.svelte";
+  import StrokeColorPicker from "./controls/StrokeColorPicker.svelte";
   // import type {Settings} from "../model/settings.ts";
 
   // let textureValue: string;
@@ -29,6 +30,9 @@
     <Accordion title="Fill">
         <FillColorPicker/>
     </Accordion>
+    <Accordion title="Stroke">
+        <StrokeColorPicker/>
+    </Accordion>
     <Accordion title="Turbulence">
         <TurbulenceSlider/>
     </Accordion>
@@ -44,6 +48,23 @@
     .control-container {
         width: 200px;
         flex: 0 0 auto;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--foreground-color) var(--background-2);
+    }
+
+    .control-container::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    .control-container::-webkit-scrollbar-track {
+        background: var(--background-2);
+        border-radius: 10px;
+    }
+
+    .control-container::-webkit-scrollbar-thumb {
+        background: var(--foreground-color);
+        border-radius: 10px;
     }
 </style>
 

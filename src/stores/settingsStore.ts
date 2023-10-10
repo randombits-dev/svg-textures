@@ -9,7 +9,10 @@ const createSettingsStore = () => {
   const dropShadowBlur = writable(0);
   const backgroundColor = writable('#111111');
   const fillColor = writable('#506f9e');
-  const fillOpacity = writable('1');
+  const fillOpacity = writable(1);
+  const strokeColor = writable('#506f9e');
+  const strokeOpacity = writable(1);
+  const strokeWidth = writable(1);
   const blobDensity = writable(0.2);
   const blobSize = writable(30);
 
@@ -23,6 +26,9 @@ const createSettingsStore = () => {
     backgroundColor,
     fillColor,
     fillOpacity,
+    strokeColor,
+    strokeOpacity,
+    strokeWidth,
     blobDensity,
     blobSize
   };

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import ControlContainer from "./ControlContainer.svelte";
-    import ImageRenderer from "./ImageRenderer.svelte";
+  import ControlContainer from "./ControlContainer.svelte";
+  import ImageRenderer from "./ImageRenderer.svelte";
 </script>
 
 <div class="flex">
@@ -12,5 +12,6 @@
 <style>
     .flex {
         display: flex;
+        height: 100vh;
     }
 </style>

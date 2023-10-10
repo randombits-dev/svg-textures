@@ -1,33 +1,30 @@
+import {randomNumberBetween} from "./random.ts";
+import {svgHeight, svgWidth} from "./svg-size.ts";
+
 type GenerateLine = {
-  size: number,
-  width: number,
-  height: number
+  size: number
 }
 
 type GenerateLines = GenerateLine & {
   density: number
 };
 
-export const generateLines = ({density, size, width, height}: GenerateLines) => {
+export const generateLines = ({density, size}: GenerateLines) => {
   const paths = [];
-  const count = ((width * height) / (size)) * density;
+  const count = ((svgWidth * svgHeight) / (size)) * density;
   for (let i = 0; i < count; i++) {
-    paths.push(generateLine({size, width, height}));
+    paths.push(generateLine({size}));
   }
   return paths;
 };
 
-export const generateLine = ({size, width, height}: GenerateLine) => {
+export const generateLine = ({size}: GenerateLine) => {
   const randomWidth = randomNumberBetween(size / 4, size * 2);
   const randomHeight = 2;
   const randomAngle = randomNumberBetween(0, 180);
 
-  const randomX = randomNumberBetween(-randomWidth, width);
-  const randomY = randomNumberBetween(-randomHeight, height);
+  const randomX = randomNumberBetween(-randomWidth, svgWidth);
+  const randomY = randomNumberBetween(-randomHeight, svgHeight);
 
   return `<rect x="${randomX}" y="${randomY}" width="${randomWidth}" height="${randomHeight}" transform="rotate(${randomAngle}, ${randomX}, ${randomY})"/>`;
-};
-
-const randomNumberBetween = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
 };
