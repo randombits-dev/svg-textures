@@ -1,5 +1,5 @@
-import {randomNumberBetween} from "./random.ts";
-import {svgHeight, svgWidth} from "./svg-size.ts";
+import {randomNumberBetween} from "../random.ts";
+import {svgHeight, svgWidth} from "../svg-size.ts";
 
 type GenerateCircle = {
   size: number,

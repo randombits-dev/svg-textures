@@ -6,7 +6,7 @@
   import Accordion from "./common/Accordion.svelte";
   import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
   import FillColorPicker from "./controls/FillColorPicker.svelte";
-  import BlobSlider from "./controls/BlobSlider.svelte";
+  import BlobSlider from "./controls/BasicControls.svelte";
   import StrokeColorPicker from "./controls/StrokeColorPicker.svelte";
   // import type {Settings} from "../model/settings.ts";
 
@@ -20,8 +20,8 @@
 
 <div class="control-container">
 
-    <TextureSelect/>
-    <Accordion title="Blob">
+    <Accordion title="General">
+        <TextureSelect/>
         <BlobSlider/>
     </Accordion>
     <Accordion title="Background">

@@ -1,4 +1,6 @@
 <div class="image-output">
+    <SaveButton on:click={regen}>Generate (same settings)</SaveButton>
+    <SaveButton on:click={randomize}>Randomize Settings</SaveButton>
     <svg xmlns="http://www.w3.org/2000/svg" id="image-render"
          style:background-color={$backgroundColor}
          style:fill={$fillColor}
@@ -37,11 +39,6 @@
             </filter>
         </defs>
         <g filter="url(#f1) url(#f2) url(#f3)">{@html $textureStore}</g>
-
-
-        <!--        <rect width='100%' height='100%' fill="red"/>-->
-        <!--        <rect width='100%' height='100%' filter='url(#noiseFilter)'/>-->
-        <!--    <use xlink:href={`/${settings?.texture}#main`} filter="url(#f1) url(#f2)"/>-->
     </svg>
 
     <SaveButton on:click={saveSvg}>Save SVG</SaveButton>
@@ -78,6 +75,14 @@
     return new XMLSerializer().serializeToString(document.getElementById('image-render'));
   };
 
+  const regen = () => {
+    textureStore.regenerate();
+  };
+
+  const randomize = () => {
+
+  };
+
   const saveSvg = () => {
     downloadSVG(getSVGContent());
   };
@@ -102,12 +107,13 @@
         flex: 1 1 auto;
         align-self: center;
         /*border: 1px solid #333;*/
+        padding: 10px 10px;
     }
 
     svg {
         border-radius: 30px;
         /*max-height: 99vh;*/
-        width: 1000px;
+        width: 100%;
         /*width: 1000px;*/
         height: 800px;
         object-fit: cover;

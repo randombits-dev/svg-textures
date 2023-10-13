@@ -1,21 +1,37 @@
-import {writable} from 'svelte/store';
+import {get, writable} from 'svelte/store';
+import {settingsStore} from "./settingsStore.ts";
+import {generateShapes} from "../utils/shape-gen/shape-gen.ts";
 
 const createTextureStore = () => {
-  const {subscribe, set, update} = writable<string>('');
+  const feature = writable<string>('circles');
+  const texture = writable<string>('');
+
+  const {blobDensity, blobSize} = settingsStore;
+
+  const changeFeature = (newFeature: string) => {
+    feature.set(newFeature);
+
+    regenerate();
+  };
+
+  const regenerate = () => {
+    texture.set(generateShapes(get(feature), {density: get(blobDensity), size: get(blobSize)}));
+  };
 
   const changeTexture = (name: string) => {
     fetch(`/${name}`)
         .then((response) => response.text())
         .then((data) => {
-          set(data);
+          texture.set(data);
         });
   };
 
 
   return {
-    subscribe,
+    changeFeature,
+    regenerate,
     changeTexture,
-    set
+    subscribe: texture.subscribe
   };
 };
 
