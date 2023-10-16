@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BurlRenderer from '../components/burl/BurlRenderer.svelte';
+---
+
+<Layout title="SVG Textures">
+    <main>
+        <BurlRenderer client:only="svelte"/>
+    </main>
+</Layout>

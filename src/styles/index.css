@@ -1,7 +1,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: var(--background-1);
     font-family: 'Inclusive Sans', sans-serif;
     color: var(--foreground-color);
 }

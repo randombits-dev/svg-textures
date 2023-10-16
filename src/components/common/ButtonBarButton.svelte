@@ -13,4 +13,12 @@
     button:hover {
         background-color: var(--background-2);
     }
+
+    button:first-child {
+        border-radius: 20px 0 0 20px;
+    }
+
+    button:last-child {
+        border-radius: 0 20px 20px 0;
+    }
 </style>

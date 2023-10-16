@@ -4,7 +4,8 @@ import {generateSquiggle} from "./squiggle-gen.ts";
 
 export type GenerateShapeOptions = {
   size: number;
-  density: number
+  density: number;
+  avoidOverlap?: boolean;
 };
 
 export const generateShapes = (feature: string, {density, size}: GenerateShapeOptions) => {

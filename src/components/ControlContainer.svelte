@@ -8,20 +8,17 @@
   import FillColorPicker from "./controls/FillColorPicker.svelte";
   import BlobSlider from "./controls/BasicControls.svelte";
   import StrokeColorPicker from "./controls/StrokeColorPicker.svelte";
-  // import type {Settings} from "../model/settings.ts";
+  import {textureStore} from "../stores/textureStore.ts";
 
-  // let textureValue: string;
-  // export let settings: Settings = {};
-  //
-  // $: {
-  //     settings.texture = textureValue;
-  // }
+  const {feature} = textureStore;
 </script>
 
 <div class="control-container">
 
     <Accordion title="General">
-        <TextureSelect/>
+        {#if $feature === 'texture'}
+            <TextureSelect/>
+        {/if}
         <BlobSlider/>
     </Accordion>
     <Accordion title="Background">

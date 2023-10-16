@@ -3,6 +3,25 @@
     --background-2: #ddd;
     --foreground-color: #372517;
     --border-color: #95918e;
+}
 
-    --svg-background-color: rgba(7, 73, 113, 0.16);
+.theme-book {
+    --background-1: #d1d1d1;
+    --background-2: #ddd;
+    --foreground-color: #372517;
+    --border-color: #95918e;
+}
+
+.theme-midnight {
+    --background-1: #202020;
+    --background-2: #0e0e0e;
+    --foreground-color: #d3d3d3;
+    --border-color: #6f6f6f;
+}
+
+.theme-light {
+    --background-1: #d8d8d8;
+    --background-2: #c3c3c3;
+    --foreground-color: #1a1a1a;
+    --border-color: #6f6f6f;
 }

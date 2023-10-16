@@ -31,7 +31,8 @@ const createTextureStore = () => {
     changeFeature,
     regenerate,
     changeTexture,
-    subscribe: texture.subscribe
+    subscribe: texture.subscribe,
+    feature
   };
 };
 
