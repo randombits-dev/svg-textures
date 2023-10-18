@@ -9,6 +9,7 @@
   let selectEl: HTMLDivElement;
   let circleEl: HTMLDivElement;
   const store = getContext('store') as any;
+  let box: DOMRect;
 
   onMount(() => {
     return store.subscribe((value) => {
@@ -20,14 +21,15 @@
 
   const handleMouseDown = (e: MouseEvent) => {
     e.preventDefault();
+    box = selectEl.getBoundingClientRect();
     handleMouseMove(e);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    const y = Math.max(0, Math.min(selectEl.clientHeight, e.clientY - selectEl.offsetTop));
-    const x = Math.max(0, Math.min(selectEl.clientWidth, e.clientX - selectEl.offsetLeft));
+    const y = Math.max(0, Math.min(selectEl.clientHeight, e.clientY - box.top));
+    const x = Math.max(0, Math.min(selectEl.clientWidth, e.clientX - box.left));
     store.setSV(x / selectEl.clientWidth, 1 - y / selectEl.clientHeight);
   };
 
@@ -51,11 +53,11 @@
         position: absolute;
         z-index: 1;
         display: block;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         transform: translate(-50%, -50%);
 
-        border: 2px solid white;
+        border: 3px solid white;
         border-radius: 100%;
     }
 </style>

@@ -19,4 +19,17 @@ button {
     color: inherit;
     background-color: inherit;
     cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.popper {
+    background-color: var(--background-1);
+    padding: 5px;
+    border-radius: 5px;
+    outline: var(--border-color) solid 1px;
 }

@@ -1,47 +1,48 @@
-<div>
-    <HuePicker/>
-    <SLPicker/>
-    <div class="output">
-        <input type="text" class="output-hex" value={hexValue} on:input={handleHexChange}/>
-        <div class="output-sample" style:background-color={hexValue}></div>
-    </div>
+<div class="container">
+    <button class="preview" style:background-color={$store.hex}
+            use:sveltePopper={{comp: ColorPickerPopover, props: {store}}}></button>
+
+    <input type="text" value={hexValue} on:input={handleHexChange}>
 </div>
 
 <script lang="ts">
-    import SLPicker from "./SVPicker.svelte";
-    import HuePicker from "./HuePicker.svelte";
-    import {getContext, onDestroy} from "svelte";
+  import {sveltePopper} from "../../../actions/createPopper.ts";
+  import {getContext, onDestroy} from "svelte";
+  import ColorPickerPopover from "./ColorPickerPopover.svelte";
 
-    const store = getContext('store') as any;
-    let hexValue: string;
+  const store = getContext('store') as any;
 
-    const unsubscribe = store.subscribe((value) => {
-        hexValue = value.hex;
-    });
-    onDestroy(() => {
-        unsubscribe();
-    });
+  let hexValue: string;
 
-    const handleHexChange = (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        store.setHex(target.value);
-    };
+  const unsubscribe = store.subscribe((value) => {
+    hexValue = value.hex;
+  });
+  onDestroy(() => {
+    unsubscribe();
+  });
 
+  const handleHexChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    store.setHex(target.value);
+  };
 </script>
 
 <style>
-
-    .output {
+    .container {
         display: flex;
     }
 
-    .output-hex {
-        width: 50%;
+    .preview {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        flex: 0 0 auto;
+        cursor: pointer;
     }
 
-    .output-sample {
-        height: 20px;
-        width: 50%;
-        background-color: red;
+    input {
+        width: 100%;
+        flex: 1 1 auto;
+        margin-left: 15px;
     }
 </style>

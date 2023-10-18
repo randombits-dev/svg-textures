@@ -4,11 +4,11 @@
   import BlurSlider from "./controls/BlurSlider.svelte";
   import ShadowSlider from "./controls/ShadowSlider.svelte";
   import Accordion from "./common/Accordion.svelte";
-  import BackgroundColorPicker from "./controls/BackgroundColorPicker.svelte";
-  import FillColorPicker from "./controls/FillColorPicker.svelte";
+  import FillColorPicker from "./controls/FillColor.svelte";
   import BlobSlider from "./controls/BasicControls.svelte";
-  import StrokeColorPicker from "./controls/StrokeColorPicker.svelte";
+  import StrokeColorPicker from "./controls/StrokeColor.svelte";
   import {textureStore} from "../stores/textureStore.ts";
+  import BackgroundColor from "./controls/BackgroundColor.svelte";
 
   const {feature} = textureStore;
 </script>
@@ -22,7 +22,7 @@
         <BlobSlider/>
     </Accordion>
     <Accordion title="Background">
-        <BackgroundColorPicker/>
+        <BackgroundColor/>
     </Accordion>
     <Accordion title="Fill">
         <FillColorPicker/>
