@@ -14,9 +14,9 @@ type GenerateBlobs = GenerateBlob & {
 
 export const generateBlobs = ({density, size}: GenerateBlobs) => {
   const paths = [];
-  const count = ((svgWidth * svgHeight) / (size)) * density;
+  const count = ((svgWidth * svgHeight) / (size * 5)) * density * 0.2;
   for (let i = 0; i < count; i++) {
-    paths.push(generateBlob({size}));
+    paths.push(generateBlob({size: size * 5}));
   }
   return paths;
 };

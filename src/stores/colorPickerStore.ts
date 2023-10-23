@@ -8,13 +8,6 @@ export type ColorValue = {
   v: number;
 }
 
-// const initialValue: ColorValue = {
-//     hex: '#405a81',
-//     h: 0.6,
-//     s: 0.5,
-//     v: 0.5
-// };
-
 export const createColorPickerStore = (initialHex: string) => {
   const initialHsv = hex2hsv(initialHex);
   const initialValue = {

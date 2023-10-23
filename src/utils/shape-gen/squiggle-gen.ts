@@ -21,9 +21,7 @@ export const generateSquiggle = ({size, density}: GenerateSquiggles) => {
       `${pointString()}`;
 
   const count = svgWidth * svgHeight * density / 1000;
-
-  console.log(count);
-
+  
   for (let i = 0; i < count; i++) {
     path += ` S ` + `${pointString()}` + `${pointString()}`;
   }

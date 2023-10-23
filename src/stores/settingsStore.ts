@@ -1,4 +1,5 @@
 import {writable} from "svelte/store";
+import {createGradientStore} from "./gradientStore.ts";
 
 const createSettingsStore = () => {
   const turbulence = writable(0);
@@ -8,15 +9,19 @@ const createSettingsStore = () => {
   const dropShadowY = writable(0);
   const dropShadowBlur = writable(0);
   const backgroundColor = writable('#111111');
-  const fillColor = writable('#506f9e');
-  const fillColor2 = writable('#111111');
-  const fillOpacity = writable(1);
-  const fillOpacity2 = writable(1);
-  const strokeColor = writable('#506f9e');
-  const strokeOpacity = writable(0);
-  const strokeWidth = writable(1);
+  // const fillColor = writable('#506f9e');
+  // const fillColor2 = writable('#992222');
+  // const fillOpacity = writable(1);
+  // const fillOpacity2 = writable(1);
+  // const strokeColor = writable('#506f9e');
+  // const strokeOpacity = writable(0);
+  // const strokeWidth = writable(1);
   const blobDensity = writable(0.2);
   const blobSize = writable(30);
+  const fillRotation = writable(270);
+
+  const fillGradientStore = createGradientStore({rotation: 0, colors: ['#e02157', '#1e53b3']});
+  const backgroundGradientStore = createGradientStore({rotation: 0, colors: ['#111111']});
 
   return {
     turbulence,
@@ -26,15 +31,12 @@ const createSettingsStore = () => {
     dropShadowY,
     dropShadowBlur,
     backgroundColor,
-    fillColor,
-    fillColor2,
-    fillOpacity,
-    fillOpacity2,
-    strokeColor,
-    strokeOpacity,
-    strokeWidth,
+    fillRotation,
     blobDensity,
-    blobSize
+    blobSize,
+
+    fillGradientStore,
+    backgroundGradientStore
   };
 };
 

@@ -3,10 +3,14 @@ import {settingsStore} from "./settingsStore.ts";
 import {generateShapes} from "../utils/shape-gen/shape-gen.ts";
 
 const createTextureStore = () => {
-  const feature = writable<string>('circles');
-  const texture = writable<string>('');
-
   const {blobDensity, blobSize} = settingsStore;
+
+  const feature = writable<string>('circles');
+
+  const initialTexture = generateShapes(get(feature), {density: get(blobDensity), size: get(blobSize)});
+
+  const texture = writable<string[]>(initialTexture);
+
 
   const changeFeature = (newFeature: string) => {
     feature.set(newFeature);

@@ -3,19 +3,35 @@
             use:sveltePopper={{comp: ColorPickerPopover, props: {store}}}></button>
 
     <input type="text" value={hexValue} on:input={handleHexChange}>
+    {#if index > 0}
+        <button on:click={() => removeColor(index)}><span class="fa-solid fa-trash"></span></button>
+
+    {/if}
 </div>
 
 <script lang="ts">
   import {sveltePopper} from "../../../actions/createPopper.ts";
-  import {getContext, onDestroy} from "svelte";
+  import {onDestroy, setContext} from "svelte";
   import ColorPickerPopover from "./ColorPickerPopover.svelte";
+  import type {ColorValue} from "../../../stores/colorPickerStore.ts";
+  import {createColorPickerStore} from "../../../stores/colorPickerStore.ts";
 
-  const store = getContext('store') as any;
+  export let initialColor;
+  export let index: number;
+
+  export let gradientStore;
+
+  const {removeColor, modifyColor} = gradientStore;
+
+
+  const store = createColorPickerStore(initialColor);
+  setContext('store', store);
 
   let hexValue: string;
 
-  const unsubscribe = store.subscribe((value) => {
+  const unsubscribe = store.subscribe((value: ColorValue) => {
     hexValue = value.hex;
+    modifyColor(index, value.hex);
   });
   onDestroy(() => {
     unsubscribe();
@@ -25,11 +41,13 @@
     const target = e.target as HTMLInputElement;
     store.setHex(target.value);
   };
+
 </script>
 
 <style>
     .container {
         display: flex;
+        margin-top: 10px;
     }
 
     .preview {
@@ -38,11 +56,15 @@
         border-radius: 5px;
         flex: 0 0 auto;
         cursor: pointer;
+        border: 1px solid var(--border-color);
     }
 
     input {
-        width: 100%;
         flex: 1 1 auto;
         margin-left: 15px;
+    }
+
+    button:last-child {
+        margin-left: 10px;
     }
 </style>
