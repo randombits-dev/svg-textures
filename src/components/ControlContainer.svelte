@@ -4,11 +4,11 @@
   import BlurSlider from "./controls/BlurSlider.svelte";
   import ShadowSlider from "./controls/ShadowSlider.svelte";
   import Accordion from "./common/Accordion.svelte";
-  import FillColorPicker from "./controls/FillColor.svelte";
+  // import FillColorPicker from "./controls/FillColor.svelte";
   import BlobSlider from "./controls/BasicControls.svelte";
-  import StrokeColorPicker from "./controls/StrokeColor.svelte";
+  // import StrokeColorPicker from "./controls/StrokeColor.svelte";
   import {textureStore} from "../stores/textureStore.ts";
-  import BackgroundColor from "./controls/BackgroundColor.svelte";
+  // import BackgroundColor from "./controls/BackgroundColor.svelte";
 
   const {feature} = textureStore;
 </script>
@@ -21,15 +21,15 @@
         {/if}
         <BlobSlider/>
     </Accordion>
-    <Accordion title="Background">
-        <BackgroundColor/>
-    </Accordion>
-    <Accordion title="Fill">
-        <FillColorPicker/>
-    </Accordion>
-    <Accordion title="Stroke">
-        <StrokeColorPicker/>
-    </Accordion>
+    <!--    <Accordion title="Background">-->
+    <!--        <BackgroundColor/>-->
+    <!--    </Accordion>-->
+    <!--    <Accordion title="Fill">-->
+    <!--        <FillColorPicker/>-->
+    <!--    </Accordion>-->
+    <!--    <Accordion title="Stroke">-->
+    <!--        <StrokeColorPicker/>-->
+    <!--    </Accordion>-->
     <Accordion title="Turbulence">
         <TurbulenceSlider/>
     </Accordion>

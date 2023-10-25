@@ -8,20 +8,25 @@ export type ColorValue = {
   v: number;
 }
 
-export const createColorPickerStore = (initialHex: string) => {
-  const initialHsv = hex2hsv(initialHex);
-  const initialValue = {
-    hex: initialHex,
-    h: initialHsv[0],
-
-    s: initialHsv[1],
-    v: initialHsv[2]
-  };
-  const {subscribe, set, update} = writable<ColorValue>(initialValue);
+export const createColorPickerStore = () => {
+  // const initialHsv = hex2hsv(initialHex);
+  // const initialValue = {
+  //   hex: initialHex,
+  //   h: initialHsv[0],
+  //
+  //   s: initialHsv[1],
+  //   v: initialHsv[2]
+  // };
+  const {subscribe, set, update} = writable<ColorValue>({hex: '#000000', h: 0, s: 0, v: 0});
 
   const setHex = (hex: string) => {
-    const [h, s, v] = hex2hsv(hex);
-    set({hex, h, s, v});
+    update((existingValue: ColorValue) => {
+      if (existingValue.hex === hex) return existingValue;
+      const [h, s, v] = hex2hsv(hex);
+      return {hex, h, s, v};
+    });
+    // const [h, s, v] = hex2hsv(hex);
+    // set({hex, h, s, v});
   };
 
   const setHue = (h: number) => {

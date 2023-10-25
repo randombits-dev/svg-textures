@@ -21,6 +21,38 @@ const regenerate = () => {
   texture.set(generateShapes(get(feature), {density: get(density), size: get(size)}));
 };
 
+const serialize = () => {
+  return JSON.stringify({
+    feature: get(feature),
+    turbulence: get(turbulence),
+    turbulenceScale: get(turbulenceScale),
+    blur: get(blur),
+    dropShadowX: get(dropShadowX),
+    dropShadowY: get(dropShadowY),
+    dropShadowBlur: get(dropShadowBlur),
+    backgroundColor: get(backgroundColor),
+    density: get(density),
+    size: get(size),
+    fillGradient: get(fillGradientStore.gradient),
+    backgroundGradient: get(backgroundGradientStore.gradient)
+  });
+};
+
+const deserialize = (obj: any) => {
+  feature.set(obj.feature);
+  turbulence.set(obj.turbulence);
+  turbulenceScale.set(obj.turbulenceScale);
+  blur.set(obj.blur);
+  dropShadowX.set(obj.dropShadowX);
+  dropShadowY.set(obj.dropShadowY);
+  dropShadowBlur.set(obj.dropShadowBlur);
+  backgroundColor.set(obj.backgroundColor);
+  density.set(obj.density);
+  size.set(obj.size);
+  fillGradientStore.gradient.set(obj.fillGradient);
+  backgroundGradientStore.gradient.set(obj.backgroundGradient);
+};
+
 export const organicSettingsStore = {
   feature,
   texture,
@@ -37,5 +69,7 @@ export const organicSettingsStore = {
   fillGradientStore,
   backgroundGradientStore,
 
-  regenerate
+  regenerate,
+  serialize,
+  deserialize
 };

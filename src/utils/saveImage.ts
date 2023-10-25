@@ -8,6 +8,20 @@ export const downloadPNG = (svg: string) => {
   exportImage(svg, downloadImage);
 };
 
+export const downloadWebp = (svg: string, width: number, height: number) => {
+  exportImage(svg, (context, image) => {
+    return () => {
+      const {canvas} = context;
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+      simulateDownload(
+          getFileName('webp'),
+          canvas.toDataURL('image/webp').replace('image/webp', 'image/octet-stream')
+      );
+    };
+  }, width, height);
+};
+
 export const downloadSVG = (svg: string) => {
   simulateDownload(getFileName('svg'), `data:image/svg+xml;base64,${getBase64SVG(svg)}`);
 };
@@ -47,7 +61,7 @@ const downloadImage = (context, image) => {
 };
 
 const getFileName = (ext: string) =>
-    `diagram-${new Date().getTime()}.${ext}`;
+    `chaos-${new Date().getTime()}.${ext}`;
 
 const simulateDownload = (download: string, href: string): void => {
   const a = document.createElement('a');
@@ -56,18 +70,18 @@ const simulateDownload = (download: string, href: string): void => {
   a.click();
   a.remove();
 };
-const exportImage = (svg: string, exporter: any) => {
+const exportImage = (svg: string, exporter: any, width: number = svgWidth, height: number = svgHeight) => {
   // const [width, height] = calcSize(svg);
   const canvas: HTMLCanvasElement = document.createElement('canvas');
-  canvas.width = svgWidth;
-  canvas.height = svgHeight;
+  canvas.width = width;
+  canvas.height = height;
 
   const context = canvas.getContext('2d');
   if (!context) {
     throw new Error('context not found');
   }
-  context.fillStyle = 'white';
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  // context.fillStyle = 'white';
+  // context.fillRect(0, 0, canvas.width, canvas.height);
 
   const image = new Image();
   image.onload = exporter(context, image);

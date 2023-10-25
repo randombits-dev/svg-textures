@@ -8,7 +8,7 @@
                         y1={fillRotationValues.y1 + '%'} y2={fillRotationValues.y2 + '%'}
                         gradientUnits="userSpaceOnUse">
             {#each $fillGradient.colors as color, i}
-                <stop offset={i/($fillGradient.colors.length-1)} stop-color={color} stop-opacity={1}/>
+                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={1}/>
             {/each}
         </linearGradient>
         <filter id="f1" x="0" y="0">
@@ -107,6 +107,11 @@
     }
   }
 
+  const calcStopOffset = (i: number) => {
+    const length = $fillGradient.colors.length;
+    return length > 1 ? i / (length - 1) : 0;
+  };
+
 </script>
 
 <style>
@@ -120,5 +125,7 @@
         /*mask: url(#svg-mask);*/
         /*clip-path: inset(650px 0px 0px 520px);*/
         /*clip-path: url(#svg-clip);*/
+        border-radius: 10px;
+
     }
 </style>

@@ -5,7 +5,80 @@ import App from '../components/App.svelte';
 
 <Layout title="SVG Textures">
     <main>
-        <App client:only="svelte"/>
-
+        <header>
+            <h1>SVG Textures</h1>
+        </header>
+        <div class="hero">
+            <div class="hero-title">Generate amazing SVG assets</div>
+            <div class="hero-sub">Tons of customization options</div>
+        </div>
+        <div class="cat">
+            <div class="cat-title">Chaos Textures</div>
+            <div class="cat-sub">Randomly generated textures that are chaotic</div>
+            <div class="cat-presets">
+                <a href="/chaos#1"><img src={`/chaos/presets/1.webp`}/></a>
+                <a href="/chaos#2"><img src={`/chaos/presets/2.webp`}/></a>
+                <a href="/chaos#5"><img src={`/chaos/presets/5.webp`}/></a>
+            </div>
+        </div>
+        <footer>
+            Brought to you by Random Bits
+        </footer>
     </main>
 </Layout>
+
+<style>
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    .cat {
+        margin-top: 50px;
+        padding: 20px;
+        text-align: center;
+    //background-color: var(--background-2);
+    }
+
+    .cat-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .cat-presets {
+        padding: 20px;
+    }
+
+
+    .cat a {
+        display: inline-block;
+        padding: 10px;
+
+    }
+
+    .cat img {
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 #000;
+    //border: 1px solid #000;
+    }
+
+    footer {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+</style>

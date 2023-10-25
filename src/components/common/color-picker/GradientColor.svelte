@@ -1,8 +1,9 @@
 {#each $gradient.colors as color, i}
-    <ColorPicker initialColor={color} index={i} gradientStore={store}/>
+    <ColorPicker initialColor={color} showTrash={i > 0} on:change={(e) => modifyColor(i, e.detail)}
+                 on:remove={() => removeColor(i)}/>
 {/each}
 
-<button on:click={() => addColor()}><span class="fa-solid fa-plus"/> Add Color</button>
+<button on:click={() => addColor()}><span class="fa-solid fa-plus"/>&nbsp;&nbsp;&nbsp;Add Color</button>
 
 {#if $gradient.colors.length > 1}
     <label for="rotation">Rotation</label>
@@ -19,7 +20,7 @@
 
   export let store: any;
 
-  const {gradient, addColor, setRotation} = store;
+  const {gradient, addColor, modifyColor, removeColor, setRotation} = store;
 
   const handleChangeRotation = (e) => {
     setRotation(Number(e.target.value));
@@ -28,6 +29,6 @@
 
 <style>
     button {
-        margin: 10px 0;
+        margin: 15px 0;
     }
 </style>

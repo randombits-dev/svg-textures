@@ -3,26 +3,25 @@
             use:sveltePopper={{comp: ColorPickerPopover, props: {store}}}></button>
 
     <input type="text" value={hexValue} on:input={handleHexChange}>
-    {#if index > 0}
-        <button on:click={() => removeColor(index)}><span class="fa-solid fa-trash"></span></button>
+    {#if showTrash}
+        <button on:click={removeColor}><span class="fa-solid fa-trash"></span></button>
 
     {/if}
 </div>
 
 <script lang="ts">
   import {sveltePopper} from "../../../actions/createPopper.ts";
-  import {onDestroy, setContext} from "svelte";
+  import {createEventDispatcher, onDestroy, setContext} from "svelte";
   import ColorPickerPopover from "./ColorPickerPopover.svelte";
   import type {ColorValue} from "../../../stores/colorPickerStore.ts";
   import {createColorPickerStore} from "../../../stores/colorPickerStore.ts";
 
-  export let initialColor;
-  export let index: number;
+  export let initialColor: string;
+  // export let index: number;
+  export let showTrash: boolean;
 
-  export let gradientStore;
 
-  const {removeColor, modifyColor} = gradientStore;
-
+  const dispatch = createEventDispatcher();
 
   const store = createColorPickerStore(initialColor);
   setContext('store', store);
@@ -31,7 +30,8 @@
 
   const unsubscribe = store.subscribe((value: ColorValue) => {
     hexValue = value.hex;
-    modifyColor(index, value.hex);
+    dispatch('change', value.hex);
+    // modifyColor(index, value.hex);
   });
   onDestroy(() => {
     unsubscribe();
@@ -41,6 +41,15 @@
     const target = e.target as HTMLInputElement;
     store.setHex(target.value);
   };
+
+  const removeColor = () => {
+    dispatch('remove');
+  };
+
+  $: {
+    console.log('setHex', initialColor);
+    store.setHex(initialColor);
+  }
 
 </script>
 
