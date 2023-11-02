@@ -17,13 +17,12 @@
   import {createColorPickerStore} from "../../../stores/colorPickerStore.ts";
 
   export let initialColor: string;
-  // export let index: number;
   export let showTrash: boolean;
 
 
   const dispatch = createEventDispatcher();
 
-  const store = createColorPickerStore(initialColor);
+  const store = createColorPickerStore();
   setContext('store', store);
 
   let hexValue: string;
@@ -47,7 +46,6 @@
   };
 
   $: {
-    console.log('setHex', initialColor);
     store.setHex(initialColor);
   }
 

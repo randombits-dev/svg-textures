@@ -8,7 +8,7 @@ export const downloadPNG = (svg: string) => {
   exportImage(svg, downloadImage);
 };
 
-export const downloadWebp = (svg: string, width: number, height: number) => {
+export const downloadWebp = (svg: string, width?: number, height?: number) => {
   exportImage(svg, (context, image) => {
     return () => {
       const {canvas} = context;
@@ -46,6 +46,19 @@ const clipboardCopy = (context, image) => {
       }
     });
   };
+};
+
+export const copyWebpToClipboard = (svg: string) => {
+  exportImage(svg, (context, image) => {
+    const {canvas} = context;
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const webp = canvas.toDataURL('image/webp').replace('image/webp', 'image/octet-stream');
+    void navigator.clipboard.write([
+      new ClipboardItem({
+        'image/webp': webp
+      })
+    ]);
+  });
 };
 
 const downloadImage = (context, image) => {

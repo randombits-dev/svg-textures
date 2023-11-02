@@ -1,4 +1,4 @@
-import {randomNumberBetween} from "../random.ts";
+import {randomIntBetween} from "../random.ts";
 import {svgHeight, svgWidth} from "../svg-size.ts";
 
 let randomX: number;
@@ -22,8 +22,8 @@ export const generateBlobs = ({density, size}: GenerateBlobs) => {
 };
 
 export const generateBlob = ({size}: GenerateBlob) => {
-  randomX = randomNumberBetween(-25, svgWidth);
-  randomY = randomNumberBetween(-50, svgHeight);
+  randomX = randomIntBetween(-25, svgWidth);
+  randomY = randomIntBetween(-50, svgHeight);
   // const size = randomNumberBetween(size/2, size*2);
   // const growth = randomNumberBetween(2, 8);
   // const edges = randomNumberBetween(3, 5);

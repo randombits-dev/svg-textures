@@ -9,19 +9,37 @@
     <!--    </div>-->
 
     <div class="controls controls-bottom">
-        <ButtonBarButton on:click={saveSvg}>Save SVG</ButtonBarButton>
-        <ButtonBarButton on:click={copySvg}>Copy SVG</ButtonBarButton>
-        <ButtonBarButton on:click={savePng}>Save PNG</ButtonBarButton>
-        <ButtonBarButton on:click={copyPng}>Copy PNG</ButtonBarButton>
-        <ButtonBarButton on:click={saveWebp}>Save Webp</ButtonBarButton>
-        <ButtonBarButton on:click={copySettings}>Copy Settings</ButtonBarButton>
+        <div class="btn-group">
+            <div class="btn-group-title">Copy →</div>
+            <CopyButton on:click={copySvg}>SVG</CopyButton>
+            <CopyButton on:click={copyPng}>PNG</CopyButton>
+            <CopyButton on:click={copyWebp}>Webp</CopyButton>
+        </div>
+
+        <div class="btn-group">
+            <div class="btn-group-title">Save →</div>
+            <button on:click={saveSvg}>SVG</button>
+            <button on:click={savePng}>PNG</button>
+            <button on:click={saveWebp}>Webp</button>
+            {#if import.meta.env.DEV}
+                <button on:click={saveWebpThumbnail}>Thumb</button>
+            {/if}
+        </div>
+        <!--        <ButtonBarButton><span use:sveltePopper={{comp: PopoverMenu, props: {isMenu: true, items: copyPopoverItems}}}>Copy</span>-->
+        <!--        </ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={saveSvg}>Save SVG</ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={copySvg}>Copy SVG</ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={savePng}>Save PNG</ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={copyPng}>Copy PNG</ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={saveWebp}>Save Webp</ButtonBarButton>-->
+        <!--        <ButtonBarButton on:click={copySettings}>Copy Settings</ButtonBarButton>-->
     </div>
 
-    <div class="controls controls-left">
-        <BurlControls/>
+    <div class="controls controls-left scrollable">
+        <OrganicControls/>
     </div>
 
-    <div class="controls controls-right">
+    <div class="controls controls-right scrollable">
         <OrganicPresets/>
     </div>
 </div>
@@ -30,25 +48,15 @@
 
 <script lang="ts">
 
-
-  import {copyClipboard, downloadPNG, downloadSVG, downloadWebp} from "../../utils/saveImage.ts";
-  import ButtonBarButton from "../common/ButtonBarButton.svelte";
-  import BurlControls from "./OrganicControls.svelte";
+  import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "../../utils/saveImage.ts";
+  import OrganicControls from "./OrganicControls.svelte";
   import OrganicRenderer from "./OrganicRenderer.svelte";
-  import {organicSettingsStore} from "../../stores/organicSettingsStore.ts";
   import OrganicPresets from "./OrganicPresets.svelte";
+  import CopyButton from "../common/CopyButton.svelte";
 
 
   const getSVGContent = () => {
     return new XMLSerializer().serializeToString(document.getElementById('image-render'));
-  };
-
-  const regen = () => {
-    organicSettingsStore.regenerate();
-  };
-
-  const randomize = () => {
-
   };
 
   const saveSvg = () => {
@@ -64,10 +72,14 @@
   };
 
   const copyWebp = () => {
-    copyClipboard(getSVGContent());
+    copyWebpToClipboard(getSVGContent());
   };
 
   const saveWebp = () => {
+    downloadWebp(getSVGContent());
+  };
+
+  const saveWebpThumbnail = () => {
     downloadWebp(getSVGContent(), 300, 300 * 9 / 16);
   };
 
@@ -75,9 +87,6 @@
     void navigator.clipboard.writeText(getSVGContent());
   };
 
-  const copySettings = () => {
-    void navigator.clipboard.writeText(organicSettingsStore.serialize());
-  };
 
 </script>
 
@@ -112,16 +121,6 @@
         position: relative;
     }
 
-    .controls-top {
-        position: fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 20px;
-        left: 0;
-        right: 0;
-    }
-
     .controls-bottom {
         position: fixed;
         display: flex;
@@ -133,10 +132,7 @@
     }
 
     .controls-left {
-        /*background-color: var(--background-1);*/
-        /*position: fixed;*/
-        /*justify-content: center;*/
-        /*align-items: center;*/
+        position: fixed;
         left: 20px;
         top: 20px;
         bottom: 20px;
@@ -153,24 +149,7 @@
         top: 20px;
         bottom: 20px;
         width: 200px;
-        overflow-y: auto;
-
-        scrollbar-width: thin;
-        scrollbar-color: var(--foreground-color) var(--background-2);
     }
 
 
-    .controls-left::-webkit-scrollbar {
-        width: 0.5rem;
-    }
-
-    .controls-left::-webkit-scrollbar-track {
-        background: var(--background-2);
-        border-radius: 10px;
-    }
-
-    .controls-left::-webkit-scrollbar-thumb {
-        background: var(--foreground-color);
-        border-radius: 10px;
-    }
 </style>

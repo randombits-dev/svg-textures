@@ -1,15 +1,18 @@
 import {get, writable} from "svelte/store";
 import {createGradientStore} from "./gradientStore.ts";
 import {generateShapes} from "../utils/shape-gen/shape-gen.ts";
+import {randomDecimalBetween} from "../utils/random.ts";
+import {organicRanges} from "../components/organic/organic-ranges.ts";
 
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
 const turbulence = writable(0);
 const turbulenceScale = writable(100);
 const blur = writable(0);
-const dropShadowX = writable(0);
-const dropShadowY = writable(0);
-const dropShadowBlur = writable(0);
+// const dropShadowX = writable(0);
+// const dropShadowY = writable(0);
+// const dropShadowBlur = writable(0);
+const threeD = writable(0);
 const backgroundColor = writable('#111111');
 const density = writable(0.2);
 const size = writable(30);
@@ -21,15 +24,21 @@ const regenerate = () => {
   texture.set(generateShapes(get(feature), {density: get(density), size: get(size)}));
 };
 
+const regenerateRandom = () => {
+  turbulence.set(randomDecimalBetween(...organicRanges.turbulance));
+  size.set(randomDecimalBetween(...organicRanges.size));
+  density.set(randomDecimalBetween(...organicRanges.density));
+  threeD.set(randomDecimalBetween(...organicRanges.shadow));
+  regenerate();
+};
+
 const serialize = () => {
   return JSON.stringify({
     feature: get(feature),
     turbulence: get(turbulence),
     turbulenceScale: get(turbulenceScale),
     blur: get(blur),
-    dropShadowX: get(dropShadowX),
-    dropShadowY: get(dropShadowY),
-    dropShadowBlur: get(dropShadowBlur),
+    threeD: get(threeD),
     backgroundColor: get(backgroundColor),
     density: get(density),
     size: get(size),
@@ -43,9 +52,7 @@ const deserialize = (obj: any) => {
   turbulence.set(obj.turbulence);
   turbulenceScale.set(obj.turbulenceScale);
   blur.set(obj.blur);
-  dropShadowX.set(obj.dropShadowX);
-  dropShadowY.set(obj.dropShadowY);
-  dropShadowBlur.set(obj.dropShadowBlur);
+  threeD.set(obj.threeD || 0);
   backgroundColor.set(obj.backgroundColor);
   density.set(obj.density);
   size.set(obj.size);
@@ -59,9 +66,7 @@ export const organicSettingsStore = {
   turbulence,
   turbulenceScale,
   blur,
-  dropShadowX,
-  dropShadowY,
-  dropShadowBlur,
+  threeD,
   backgroundColor,
   density,
   size,
@@ -70,6 +75,7 @@ export const organicSettingsStore = {
   backgroundGradientStore,
 
   regenerate,
+  regenerateRandom,
   serialize,
   deserialize
 };

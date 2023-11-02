@@ -13,12 +13,18 @@ import App from '../components/App.svelte';
             <div class="hero-sub">Tons of customization options</div>
         </div>
         <div class="cat">
-            <div class="cat-title">Chaos Textures</div>
-            <div class="cat-sub">Randomly generated textures that are chaotic</div>
-            <div class="cat-presets">
-                <a href="/chaos#1"><img src={`/chaos/presets/1.webp`}/></a>
-                <a href="/chaos#2"><img src={`/chaos/presets/2.webp`}/></a>
-                <a href="/chaos#5"><img src={`/chaos/presets/5.webp`}/></a>
+            <div class="container">
+                <div class="cat-title">Chaos Textures</div>
+                <div class="cat-sub">Randomly generate textures that are chaotic in nature. Some look like a topography
+                    of
+                    lakes or rivers. Others are like specs of dust. Still others remind me of drywall. Choose a sample
+                    to get started.
+                </div>
+                <div class="cat-presets">
+                    <a href="/chaos#pinkish"><img src={`/chaos/presets/pinkish.webp`}/></a>
+                    <a href="/chaos#bluewhite"><img src={`/chaos/presets/bluewhite.webp`}/></a>
+                    <a href="/chaos#peach"><img src={`/chaos/presets/peach.webp`}/></a>
+                </div>
             </div>
         </div>
         <footer>
@@ -28,7 +34,14 @@ import App from '../components/App.svelte';
 </Layout>
 
 <style>
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
     .hero {
+        padding: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -50,7 +63,7 @@ import App from '../components/App.svelte';
     .cat {
         margin-top: 50px;
         padding: 20px;
-        text-align: center;
+        background: url('/img_2.png');
     //background-color: var(--background-2);
     }
 

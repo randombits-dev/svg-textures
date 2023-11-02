@@ -35,7 +35,7 @@ export const sveltePopper = (node: HTMLElement, {comp, props}) => {
       document.removeEventListener('mousedown', handleClick);
     };
     const handleClick = (e: MouseEvent) => {
-      if (container.contains(e.target as Node)) {
+      if (!props.isMenu && container.contains(e.target as Node)) {
         return;
       }
       e.stopPropagation();

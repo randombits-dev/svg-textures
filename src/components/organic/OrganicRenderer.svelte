@@ -28,7 +28,7 @@
             <feGaussianBlur in="SourceGraphic" stdDeviation={$blur}/>
         </filter>
         <filter id="f3" x="0" y="0">
-            <feDropShadow dx={$dropShadowX} dy={$dropShadowY} stdDeviation={$dropShadowBlur}/>
+            <feDropShadow dx={$threeD} dy={$threeD} flood-color="#000" stdDeviation={0}/>
         </filter>
     </defs>
     <g filter="url(#f1) url(#f2) url(#f3)" fill="url(#fillGradient)">{@html $texture}</g>
@@ -47,9 +47,7 @@
     turbulence,
     turbulenceScale,
     blur,
-    dropShadowX,
-    dropShadowY,
-    dropShadowBlur,
+    threeD,
     backgroundColor,
     fillGradientStore,
     backgroundGradientStore

@@ -1,8 +1,6 @@
-<div class="container">
-    {#each organicPresets as preset, i}
-        <img src={`/chaos/presets/${i+1}.webp`} on:click={() => loadPreset(preset)}/>
-    {/each}
-</div>
+{#each organicPresets as preset, i}
+    <img src={`/chaos/presets/${preset.id}.webp`} on:click={() => loadPreset(preset)}/>
+{/each}
 
 <script lang="ts">
 

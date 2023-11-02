@@ -27,6 +27,11 @@ button {
     cursor: pointer;
     outline: none;
     border: none;
+    font-family: inherit;
+}
+
+button i {
+    margin-right: 5px;
 }
 
 input[type="range"] {
@@ -35,7 +40,6 @@ input[type="range"] {
 
 .popper {
     background-color: var(--background-1);
-    padding: 5px;
     border-radius: 5px;
     outline: var(--border-color) solid 1px;
 }
@@ -65,3 +69,54 @@ select {
     width: 50px;
 }
 
+.scrollable {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground-color) var(--background-2);
+}
+
+.scrollable::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background: var(--background-2);
+    border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background: var(--foreground-color);
+    border-radius: 10px;
+}
+
+.btn-group {
+    display: flex;
+    align-items: stretch;
+    margin: 0 10px
+}
+
+.btn-group-title {
+    background-color: var(--background-1);
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.btn-group button {
+    padding: 5px 10px;
+    border-top: 2px solid var(--background-1);
+    border-bottom: 2px solid var(--background-1);
+    width: 75px;
+    font-size: 16px;
+
+}
+
+.btn-group button:hover {
+    background-color: var(--background-1);
+}
+
+.btn-group button:last-child {
+    border-right: 2px solid var(--background-1);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

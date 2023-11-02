@@ -1,4 +1,4 @@
-import {randomNumberBetween} from "../random.ts";
+import {randomIntBetween} from "../random.ts";
 import {svgHeight, svgWidth} from "../svg-size.ts";
 
 type GenerateRect = {
@@ -19,11 +19,11 @@ export const generateRects = ({density, size}: GenerateCircles) => {
 };
 
 export const generateRect = ({size}: GenerateRect) => {
-  const randomWidth = randomNumberBetween(size / 2, size * 2);
-  const randomHeight = randomNumberBetween(size / 2, size * 2);
-  const randomAngle = randomNumberBetween(0, 45);
-  const randomX = randomNumberBetween(-randomWidth, svgWidth);
-  const randomY = randomNumberBetween(-randomHeight, svgHeight);
+  const randomWidth = randomIntBetween(size / 2, size * 2);
+  const randomHeight = randomIntBetween(size / 2, size * 2);
+  const randomAngle = randomIntBetween(0, 45);
+  const randomX = randomIntBetween(-randomWidth, svgWidth);
+  const randomY = randomIntBetween(-randomHeight, svgHeight);
 
   return `<rect x="${randomX}" y="${randomY}" width="${randomWidth}" height="${randomHeight}" transform="rotate(${randomAngle}, ${randomX}, ${randomY})"/>`;
 };
