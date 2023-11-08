@@ -47,11 +47,11 @@
 
 <script lang="ts">
   import GradientColor from "../common/color-picker/GradientColor.svelte";
-  import {organicSettingsStore} from "../../stores/organicSettingsStore.ts";
-  import {organicPresets} from "./presets/organic-presets.ts";
+  import {organicStore} from "./organicStore.ts";
+  import {organicPresets} from "./organic-presets.ts";
   import {organicRanges} from "./organic-ranges.ts";
 
-  const {feature, turbulence, density, size, threeD, fillGradientStore, backgroundGradientStore} = organicSettingsStore;
+  const {feature, turbulence, density, size, threeD, fillGradientStore, backgroundGradientStore} = organicStore;
 
   const setDefaultSettings = () => {
     turbulence.set(0.05);
@@ -63,11 +63,11 @@
   };
 
   const regenerate = () => {
-    organicSettingsStore.regenerate();
+    organicStore.regenerate();
   };
 
   const regenRandom = () => {
-    organicSettingsStore.regenerateRandom();
+    organicStore.regenerateRandom();
   };
 
 
@@ -75,7 +75,7 @@
   if (hash) {
     const preset = organicPresets.find(p => p.id === hash);
     if (preset) {
-      organicSettingsStore.deserialize(JSON.parse(JSON.stringify(preset)));
+      organicStore.deserialize(JSON.parse(JSON.stringify(preset)));
       regenerate();
     } else {
       setDefaultSettings();
@@ -85,7 +85,7 @@
   }
 
   const copySettings = () => {
-    void navigator.clipboard.writeText(organicSettingsStore.serialize());
+    void navigator.clipboard.writeText(organicStore.serialize());
   };
 
 </script>

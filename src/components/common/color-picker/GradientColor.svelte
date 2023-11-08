@@ -8,7 +8,7 @@
 {#if opacity}
     <label for="rotation">Opacity</label>
     <div class="range-control">
-        <input name="opacity" type="range" min="0" max="1" step="0.05" value={$gradient.opacity || 1}
+        <input name="opacity" type="range" min="0" max="1" step="0.05" value={$gradient.opacity}
                on:change={handleChangeOpacity}>
     </div>
 {/if}

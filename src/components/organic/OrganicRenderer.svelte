@@ -40,7 +40,7 @@
 <script lang="ts">
 
 
-  import {organicSettingsStore} from "../../stores/organicSettingsStore.ts";
+  import {organicStore} from "./organicStore.ts";
 
   const {
     texture,
@@ -51,7 +51,7 @@
     backgroundColor,
     fillGradientStore,
     backgroundGradientStore
-  } = organicSettingsStore;
+  } = organicStore;
 
   const {gradient: fillGradient} = fillGradientStore;
   const {gradient: backgroundGradient} = backgroundGradientStore;

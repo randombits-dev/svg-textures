@@ -1,11 +1,13 @@
 import {get, writable} from "svelte/store";
-import {createGradientStore} from "./gradientStore.ts";
-import {generateShapes} from "../utils/shape-gen/shape-gen.ts";
+import {createGradientStore} from "../common/color-picker/gradientStore.ts";
+import {generateShapes} from "../../utils/shape-gen/shape-gen.ts";
+import {randomDecimalBetween} from "../../utils/random.ts";
+import {organicRanges} from "./organic-ranges.ts";
 
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
 const turbulence = writable(0);
-const turbulenceScale = writable(1);
+const turbulenceScale = writable(100);
 const blur = writable(0);
 // const dropShadowX = writable(0);
 // const dropShadowY = writable(0);
@@ -22,13 +24,14 @@ const regenerate = () => {
   texture.set(generateShapes(get(feature), {density: get(density), size: get(size)}));
 };
 
-// const regenerateRandom = () => {
-//   turbulence.set(randomDecimalBetween(...organicRanges.turbulance));
-//   size.set(randomDecimalBetween(...organicRanges.size));
-//   density.set(randomDecimalBetween(...organicRanges.density));
-//   threeD.set(randomDecimalBetween(...organicRanges.shadow));
-//   regenerate();
-// };
+const regenerateRandom = () => {
+  turbulence.set(randomDecimalBetween(...organicRanges.turbulance));
+  size.set(randomDecimalBetween(...organicRanges.size));
+  density.set(randomDecimalBetween(...organicRanges.density));
+  threeD.set(randomDecimalBetween(...organicRanges.shadow));
+
+  regenerate();
+};
 
 const serialize = () => {
   return JSON.stringify({
@@ -54,11 +57,11 @@ const deserialize = (obj: any) => {
   backgroundColor.set(obj.backgroundColor);
   density.set(obj.density);
   size.set(obj.size);
-  fillGradientStore.gradient.set(obj.fillGradient);
-  backgroundGradientStore.gradient.set(obj.backgroundGradient);
+  fillGradientStore.set(obj.fillGradient);
+  backgroundGradientStore.set(obj.backgroundGradient);
 };
 
-export const patternsStore = {
+export const organicStore = {
   feature,
   texture,
   turbulence,
@@ -73,7 +76,7 @@ export const patternsStore = {
   backgroundGradientStore,
 
   regenerate,
-  // regenerateRandom,
+  regenerateRandom,
   serialize,
   deserialize
 };

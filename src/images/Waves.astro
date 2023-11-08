@@ -8,14 +8,19 @@ const getVal = (num) => {
   return pointness * 0.01 * num;
 };
 
-const path = `M0 ${getVal(22.332)}L33 ${getVal(19)}C82 ${getVal(13.5)} 133 ${getVal(14.8889)} 200 ${getVal(29.7778)}C267 ${getVal(44.6667)} 333 ${getVal(67)} 400 ${getVal(70.7222)}C467 ${getVal(74.4444)} 533 ${getVal(59.5556)} 600 ${getVal(40.9444)}C667 ${getVal(22.3333)} 733 0 800 0C867 0 933 ${getVal(22.3333)} 1000 ${getVal(29.7778)}C1067 ${getVal(37.2222)} 1133 ${getVal(29.7778)} 1167 ${getVal(26.0556)}L1200 ${getVal(22.3333)}V${getVal(134)}H1167C1133 ${getVal(134)} 1067 ${getVal(134)} 1000 ${getVal(134)}C933 ${getVal(134)} 867 ${getVal(134)} 800 ${getVal(134)}C733 ${getVal(134)} 667 ${getVal(134)} 600 ${getVal(134)}C533 ${getVal(134)} 467 ${getVal(134)} 400 ${getVal(134)}C333 ${getVal(134)} 267 ${getVal(134)} 200 ${getVal(134)}C133 ${getVal(134)} 67 ${getVal(134)} 33 ${getVal(134)}H0V22.332Z`;
+const path = `M0,50 C200,100 300,0 500,50 L500,100 L0,100 Z`;
+// const path = `M0 ${getVal(22.332)}L33 ${getVal(19)}C82 ${getVal(13.5)} 133 ${getVal(14.8889)} 200 ${getVal(29.7778)}C267 ${getVal(44.6667)} 333 ${getVal(67)} 400 ${getVal(70.7222)}C467 ${getVal(74.4444)} 533 ${getVal(59.5556)} 600 ${getVal(40.9444)}C667 ${getVal(22.3333)} 733 0 800 0C867 0 933 ${getVal(22.3333)} 1000 ${getVal(29.7778)}C1067 ${getVal(37.2222)} 1133 ${getVal(29.7778)} 1167 ${getVal(26.0556)}L1200 ${getVal(22.3333)}V${getVal(134)}H1167C1133 ${getVal(134)} 1067 ${getVal(134)} 1000 ${getVal(134)}C933 ${getVal(134)} 867 ${getVal(134)} 800 ${getVal(134)}C733 ${getVal(134)} 667 ${getVal(134)} 600 ${getVal(134)}C533 ${getVal(134)} 467 ${getVal(134)} 400 ${getVal(134)}C333 ${getVal(134)} 267 ${getVal(134)} 200 ${getVal(134)}C133 ${getVal(134)} 67 ${getVal(134)} 33 ${getVal(134)}H0V22.332Z`;
 ---
-<svg viewBox={`0 0 1200 ${getVal(134)}`} xmlns="http://www.w3.org/2000/svg">
+<svg viewBox={`0 0 500 100`} xmlns="http://www.w3.org/2000/svg">
     <path fill={color2} d={path}/>
 </svg>
+<!--<svg viewBox={`0 0 1200 ${getVal(134)}`} xmlns="http://www.w3.org/2000/svg">-->
+<!--    <path fill={color2} d={path}/>-->
+<!--</svg>-->
 
 <style>
     svg {
         margin-top: 50px;
+        display: block;
     }
 </style>

@@ -34,8 +34,16 @@
 
 <section>
     <label>Fill Color</label>
-
     <GradientColor store={fillGradientStore}/>
+</section>
+
+<section>
+    <label>Stroke Color</label>
+    <GradientColor store={strokeGradientStore}/>
+    <label for="stroke">Stroke Width</label>
+    <input name="stroke" type="range"
+           min={patternRanges.stroke[0]} max={patternRanges.stroke[1]} step="1"
+           bind:value={$strokeWidth}>
 </section>
 
 <section>
@@ -57,11 +65,11 @@
 
 <script lang="ts">
   import GradientColor from "../common/color-picker/GradientColor.svelte";
-  import {patternsStore} from "../../stores/patternsStore.ts";
+  import {patternsStore} from "./patternsStore.ts";
   import {patternPresets} from "./pattern-presets.ts";
   import {patternRanges} from "./pattern-ranges.ts";
 
-  const {feature, turbulence, density, size, blur, threeD, fillGradientStore, backgroundGradientStore} = patternsStore;
+  const {feature, turbulence, density, size, blur, threeD, strokeWidth, fillGradientStore, backgroundGradientStore, strokeGradientStore} = patternsStore;
 
   const setDefaultSettings = () => {
     size.set(60);

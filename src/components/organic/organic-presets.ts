@@ -57,7 +57,7 @@ export const organicPresets = [
     "backgroundColor": "#111111",
     "density": 0.81,
     "size": 10.250435857920635,
-    "fillGradient": {"rotation": 90, "colors": ["#F9E7BB", "#E97CBB"]},
+    "fillGradient": {"rotation": 90, "opacity": 0.6, "colors": ["#F9E7BB", "#E97CBB"]},
     "backgroundGradient": {"rotation": 0, "colors": ["#111111"]}
   },
   {"id": "white", "feature": "circles", "turbulence": 0.025, "turbulenceScale": 100, "blur": 0, "threeD": 0, "backgroundColor": "#111111", "density": 0.88, "size": 13, "fillGradient": {"rotation": 90, "colors": ["#f7f7f7"]}, "backgroundGradient": {"rotation": 0, "colors": ["#f5f5f5"]}},

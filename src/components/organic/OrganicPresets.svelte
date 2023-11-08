@@ -4,12 +4,12 @@
 
 <script lang="ts">
 
-  import {organicPresets} from "./presets/organic-presets.ts";
-  import {organicSettingsStore} from "../../stores/organicSettingsStore.ts";
+  import {organicPresets} from "./organic-presets.ts";
+  import {organicStore} from "./organicStore.ts";
 
   const loadPreset = (preset) => {
-    organicSettingsStore.deserialize(JSON.parse(JSON.stringify(preset)));
-    organicSettingsStore.regenerate();
+    organicStore.deserialize(JSON.parse(JSON.stringify(preset)));
+    organicStore.regenerate();
   };
 </script>
 

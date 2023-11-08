@@ -13,8 +13,8 @@
   import {sveltePopper} from "../../../actions/createPopper.ts";
   import {createEventDispatcher, onDestroy, setContext} from "svelte";
   import ColorPickerPopover from "./ColorPickerPopover.svelte";
-  import type {ColorValue} from "../../../stores/colorPickerStore.ts";
-  import {createColorPickerStore} from "../../../stores/colorPickerStore.ts";
+  import type {ColorValue} from "./colorPickerStore.ts";
+  import {createColorPickerStore} from "./colorPickerStore.ts";
 
   export let initialColor: string;
   export let showTrash: boolean;

@@ -2,7 +2,7 @@
 
 <script lang="ts">
   import {settingsStore} from "../../stores/settingsStore.ts";
-  import {createColorPickerStore} from "../../stores/colorPickerStore.ts";
+  import {createColorPickerStore} from "../common/color-picker/colorPickerStore.ts";
   import {onMount, setContext} from "svelte";
   import ColorPicker from "../common/color-picker/ColorPicker.svelte";
 

@@ -5,7 +5,7 @@
 <script lang="ts">
 
   import {patternPresets} from "./pattern-presets.ts";
-  import {patternsStore} from "../../stores/patternsStore.ts";
+  import {patternsStore} from "./patternsStore.ts";
 
   const loadPreset = (preset) => {
     patternsStore.deserialize(JSON.parse(JSON.stringify(preset)));

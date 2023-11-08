@@ -6,7 +6,7 @@
 <input name="stroke_width" type="range" min="1" max="10" step="1" bind:value={$strokeWidth}>
 <script lang="ts">
   import ColorPicker from "../common/color-picker/ColorPickerPopover.svelte";
-  import {createColorPickerStore} from "../../stores/colorPickerStore.ts";
+  import {createColorPickerStore} from "../common/color-picker/colorPickerStore.ts";
   import {setContext} from "svelte";
   import {settingsStore} from "../../stores/settingsStore.ts";
 

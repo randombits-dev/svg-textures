@@ -1,5 +1,5 @@
 import {writable} from 'svelte/store';
-import {hex2hsv, hsv2hex} from "../utils/color-utils.ts";
+import {hex2hsv, hsv2hex} from "../../../utils/color-utils.ts";
 
 export type ColorValue = {
   hex: string;

@@ -1,10 +1,16 @@
 import {writable} from 'svelte/store';
-import type {Gradient} from "../model/settings.ts";
+import type {Gradient} from "../../../model/settings.ts";
 
 
 export const createGradientStore = (initialGradient?: Gradient) => {
-  const gradient = writable<Gradient>(initialGradient || {rotation: 0, colors: ['#000'], opacity: 1});
+  const gradient = writable<Gradient>(initialGradient || {rotation: 0, colors: ['#111111'], opacity: 1});
 
+  const set = (newGradient: Gradient) => {
+    if (newGradient.opacity == undefined) {
+      newGradient.opacity = 1;
+    }
+    gradient.set(newGradient);
+  };
   const removeColor = (index: number) => {
     gradient.update((gradient) => {
       gradient.colors.splice(index, 1);
@@ -41,6 +47,7 @@ export const createGradientStore = (initialGradient?: Gradient) => {
   };
 
   return {
+    set,
     gradient,
     removeColor,
     addColor,

@@ -2,6 +2,7 @@
      bind:this={svgEl}
      viewBox="0 0 1920 1080"
      style:background={backgroundGradientString}
+     style:stroke-width={$strokeWidth}
 >
     <defs>
         <linearGradient id="fillGradient" x1={fillRotationValues.x1 + '%'} x2={fillRotationValues.x2 + '%'}
@@ -9,6 +10,13 @@
                         gradientUnits="userSpaceOnUse">
             {#each $fillGradient.colors as color, i}
                 <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$fillGradient.opacity}/>
+            {/each}
+        </linearGradient>
+        <linearGradient id="strokeGradient" x1={fillRotationValues.x1 + '%'} x2={fillRotationValues.x2 + '%'}
+                        y1={fillRotationValues.y1 + '%'} y2={fillRotationValues.y2 + '%'}
+                        gradientUnits="userSpaceOnUse">
+            {#each $strokeGradient.colors as color, i}
+                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$strokeGradient.opacity}/>
             {/each}
         </linearGradient>
         <filter id="f1" x="0" y="0">
@@ -31,14 +39,14 @@
             <feDropShadow dx={$threeD} dy={$threeD} flood-color="#000" stdDeviation={0}/>
         </filter>
     </defs>
-    <g filter="url(#f1) url(#f2) url(#f3)" fill="url(#fillGradient)">{@html $texture}</g>
+    <g filter="url(#f1) url(#f2) url(#f3)" fill="url(#fillGradient)" stroke="url(#strokeGradient)">{@html $texture}</g>
 </svg>
 
 <svelte:window on:mousedown={handleMouseDown}/>
 <svelte:body style:background-color={$backgroundColor}/>
 
 <script lang="ts">
-  import {patternsStore} from "../../stores/patternsStore.ts";
+  import {patternsStore} from "./patternsStore.ts";
 
   const {
     texture,
@@ -46,13 +54,16 @@
     turbulenceScale,
     blur,
     threeD,
+    strokeWidth,
     backgroundColor,
     fillGradientStore,
-    backgroundGradientStore
+    backgroundGradientStore,
+    strokeGradientStore,
   } = patternsStore;
 
   const {gradient: fillGradient} = fillGradientStore;
   const {gradient: backgroundGradient} = backgroundGradientStore;
+  const {gradient: strokeGradient} = strokeGradientStore;
 
 
   let svgEl: SVGSVGElement;

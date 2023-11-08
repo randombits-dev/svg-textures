@@ -1,5 +1,5 @@
 import {writable} from "svelte/store";
-import {createGradientStore} from "./gradientStore.ts";
+import {createGradientStore} from "../components/common/color-picker/gradientStore.ts";
 
 const createSettingsStore = () => {
   const turbulence = writable(0);
