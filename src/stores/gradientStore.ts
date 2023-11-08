@@ -3,7 +3,7 @@ import type {Gradient} from "../model/settings.ts";
 
 
 export const createGradientStore = (initialGradient?: Gradient) => {
-  const gradient = writable<Gradient>(initialGradient || {rotation: 0, colors: ['#000']});
+  const gradient = writable<Gradient>(initialGradient || {rotation: 0, colors: ['#000'], opacity: 1});
 
   const removeColor = (index: number) => {
     gradient.update((gradient) => {
@@ -33,11 +33,19 @@ export const createGradientStore = (initialGradient?: Gradient) => {
     });
   };
 
+  const setOpacity = (opacity: number) => {
+    gradient.update((gradient) => {
+      gradient.opacity = opacity;
+      return gradient;
+    });
+  };
+
   return {
     gradient,
     removeColor,
     addColor,
     modifyColor,
-    setRotation
+    setRotation,
+    setOpacity
   };
 };

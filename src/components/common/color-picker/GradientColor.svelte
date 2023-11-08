@@ -5,6 +5,14 @@
 
 <button on:click={() => addColor()}><span class="fa-solid fa-plus"/>&nbsp;&nbsp;&nbsp;Add Color</button>
 
+{#if opacity}
+    <label for="rotation">Opacity</label>
+    <div class="range-control">
+        <input name="opacity" type="range" min="0" max="1" step="0.05" value={$gradient.opacity || 1}
+               on:change={handleChangeOpacity}>
+    </div>
+{/if}
+
 {#if $gradient.colors.length > 1}
     <label for="rotation">Rotation</label>
     <div class="range-control">
@@ -19,11 +27,16 @@
   import ColorPicker from "./ColorPicker.svelte";
 
   export let store: any;
+  export let opacity = true;
 
-  const {gradient, addColor, modifyColor, removeColor, setRotation} = store;
+  const {gradient, addColor, modifyColor, removeColor, setRotation, setOpacity} = store;
 
   const handleChangeRotation = (e) => {
     setRotation(Number(e.target.value));
+  };
+
+  const handleChangeOpacity = (e) => {
+    setOpacity(Number(e.target.value));
   };
 </script>
 

@@ -8,7 +8,7 @@
                         y1={fillRotationValues.y1 + '%'} y2={fillRotationValues.y2 + '%'}
                         gradientUnits="userSpaceOnUse">
             {#each $fillGradient.colors as color, i}
-                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$fillGradient.opacity || 1}/>
+                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$fillGradient.opacity}/>
             {/each}
         </linearGradient>
         <filter id="f1" x="0" y="0">
@@ -38,9 +38,7 @@
 <svelte:body style:background-color={$backgroundColor}/>
 
 <script lang="ts">
-
-
-  import {organicSettingsStore} from "../../stores/organicSettingsStore.ts";
+  import {patternsStore} from "../../stores/patternsStore.ts";
 
   const {
     texture,
@@ -51,7 +49,7 @@
     backgroundColor,
     fillGradientStore,
     backgroundGradientStore
-  } = organicSettingsStore;
+  } = patternsStore;
 
   const {gradient: fillGradient} = fillGradientStore;
   const {gradient: backgroundGradient} = backgroundGradientStore;

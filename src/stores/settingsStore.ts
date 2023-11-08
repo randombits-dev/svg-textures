@@ -20,8 +20,8 @@ const createSettingsStore = () => {
   const blobSize = writable(30);
   const fillRotation = writable(270);
 
-  const fillGradientStore = createGradientStore({rotation: 0, colors: ['#e02157', '#1e53b3']});
-  const backgroundGradientStore = createGradientStore({rotation: 0, colors: ['#111111']});
+  const fillGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#e02157', '#1e53b3']});
+  const backgroundGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#111111']});
 
   return {
     turbulence,

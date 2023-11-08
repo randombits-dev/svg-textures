@@ -1,13 +1,11 @@
 import {get, writable} from "svelte/store";
 import {createGradientStore} from "./gradientStore.ts";
 import {generateShapes} from "../utils/shape-gen/shape-gen.ts";
-import {randomDecimalBetween} from "../utils/random.ts";
-import {organicRanges} from "../components/organic/organic-ranges.ts";
 
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
 const turbulence = writable(0);
-const turbulenceScale = writable(100);
+const turbulenceScale = writable(1);
 const blur = writable(0);
 // const dropShadowX = writable(0);
 // const dropShadowY = writable(0);
@@ -24,13 +22,13 @@ const regenerate = () => {
   texture.set(generateShapes(get(feature), {density: get(density), size: get(size)}));
 };
 
-const regenerateRandom = () => {
-  turbulence.set(randomDecimalBetween(...organicRanges.turbulance));
-  size.set(randomDecimalBetween(...organicRanges.size));
-  density.set(randomDecimalBetween(...organicRanges.density));
-  threeD.set(randomDecimalBetween(...organicRanges.shadow));
-  regenerate();
-};
+// const regenerateRandom = () => {
+//   turbulence.set(randomDecimalBetween(...organicRanges.turbulance));
+//   size.set(randomDecimalBetween(...organicRanges.size));
+//   density.set(randomDecimalBetween(...organicRanges.density));
+//   threeD.set(randomDecimalBetween(...organicRanges.shadow));
+//   regenerate();
+// };
 
 const serialize = () => {
   return JSON.stringify({
@@ -60,7 +58,7 @@ const deserialize = (obj: any) => {
   backgroundGradientStore.gradient.set(obj.backgroundGradient);
 };
 
-export const organicSettingsStore = {
+export const patternsStore = {
   feature,
   texture,
   turbulence,
@@ -75,7 +73,7 @@ export const organicSettingsStore = {
   backgroundGradientStore,
 
   regenerate,
-  regenerateRandom,
+  // regenerateRandom,
   serialize,
   deserialize
 };

@@ -1,0 +1,5 @@
+export const patternPresets = [
+  {"id": "circleredblue", "feature": "circles", "turbulence": 0, "turbulenceScale": 100, "blur": 0, "threeD": 0, "backgroundColor": "#111111", "density": 0.49, "size": 82, "fillGradient": {"rotation": 0, "opacity": 0.55, "colors": ["#e02157", "#1e53b3"]}, "backgroundGradient": {"rotation": 0, "opacity": 1, "colors": ["#e6e6e6"]}},
+  {"id": "circleteal", "feature": "circles", "turbulence": 0, "turbulenceScale": 100, "blur": 0, "threeD": 6.8, "backgroundColor": "#111111", "density": 0.74, "size": 29, "fillGradient": {"rotation": 135, "opacity": 1, "colors": ["#23a5b0", "#248fc2"]}, "backgroundGradient": {"rotation": 0, "opacity": 1, "colors": ["#262626"]}},
+  {"id": "circleyellow", "feature": "circles", "turbulence": 0, "turbulenceScale": 1, "blur": 0, "threeD": 0, "backgroundColor": "#111111", "density": 0.34, "size": 56, "fillGradient": {"rotation": 0, "opacity": 0.05, "colors": ["#e3dab6"]}, "backgroundGradient": {"rotation": 0, "opacity": 1, "colors": ["#111111"]}},
+];

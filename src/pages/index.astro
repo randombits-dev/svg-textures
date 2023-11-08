@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import App from '../components/App.svelte';
+import Waves from "../images/Waves.astro";
 ---
 
 <Layout title="SVG Textures">
@@ -12,7 +13,7 @@ import App from '../components/App.svelte';
             <div class="hero-title">Generate amazing SVG assets</div>
             <div class="hero-sub">Tons of customization options</div>
         </div>
-        <div class="cat">
+        <div class="cat" style="background-color: #1f53ce; color: #eee;">
             <div class="container">
                 <div class="cat-title">Chaos Textures</div>
                 <div class="cat-sub">Randomly generate textures that are chaotic in nature. Some look like a topography
@@ -26,6 +27,23 @@ import App from '../components/App.svelte';
                     <a href="/chaos#peach"><img src={`/chaos/presets/peach.webp`}/></a>
                 </div>
             </div>
+            <Waves color1="#1f53ce" color2="#ffb800"/>
+
+        </div>
+        <div class="cat" style="background-color: #ffb800; color: #111">
+            <div class="container">
+                <div class="cat-title">Pattern Backgrounds</div>
+                <div class="cat-sub">Randomly generate background patterns. Choose a sample
+                    to get started.
+                </div>
+                <div class="cat-presets">
+                    <a href="/patterns#circleredblue"><img src={`/patterns/presets/circleredblue.webp`}/></a>
+                    <a href="/patterns#circleteal"><img src={`/patterns/presets/circleteal.webp`}/></a>
+                    <a href="/patterns#circleyellow"><img src={`/patterns/presets/circleyellow.webp`}/></a>
+                </div>
+            </div>
+            <Waves color1="#1f53ce" color2="var(--background-1)"/>
+
         </div>
         <footer>
             Brought to you by Random Bits
@@ -60,13 +78,6 @@ import App from '../components/App.svelte';
         font-weight: 400;
     }
 
-    .cat {
-        margin-top: 50px;
-        padding: 20px;
-        background: url('/img_2.png');
-    //background-color: var(--background-2);
-    }
-
     .cat-title {
         font-size: 2rem;
         font-weight: 700;
@@ -93,5 +104,10 @@ import App from '../components/App.svelte';
     footer {
         margin-top: 100px;
         margin-bottom: 100px;
+    }
+
+    .cat {
+        padding-top: 50px;
+        margin-bottom: -10px;
     }
 </style>
