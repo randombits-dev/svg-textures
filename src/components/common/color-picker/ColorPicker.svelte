@@ -17,7 +17,7 @@
   import {createColorPickerStore} from "./colorPickerStore.ts";
 
   export let initialColor: string;
-  export let showTrash: boolean;
+  export let showTrash: boolean = false;
 
 
   const dispatch = createEventDispatcher();

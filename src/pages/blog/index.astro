@@ -1,0 +1,16 @@
+---
+import {getCollection} from "astro:content";
+
+const posts = (await getCollection('articles')).filter(item => !item.data.draft).sort(
+    (a, b) => new Date(b.data.updated).valueOf() - new Date(a.data.updated).valueOf()
+);
+---
+
+{
+    posts.map(post => {
+        return <a href={`/blog/${post.slug}`} class="">
+            <h2 class="text-xl font-bold">{post.data.title}</h2>
+            <p class="text-gray-500">{post.data.summary}</p>
+        </a>;
+        })
+    }

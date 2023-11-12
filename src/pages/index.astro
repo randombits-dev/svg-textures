@@ -5,108 +5,123 @@ import Waves from "../images/Waves.astro";
 ---
 
 <Layout title="SVG Textures">
-    <main>
-        <header>
-            <h1>SVG Textures</h1>
-        </header>
-        <div class="hero">
-            <div class="hero-title">Generate amazing SVG assets</div>
-            <div class="hero-sub">Tons of customization options</div>
+  <main>
+    <header>
+      <h1>SVG Textures</h1>
+    </header>
+    <div class="hero">
+      <div class="hero-title">Generate amazing SVG assets</div>
+      <div class="hero-sub">Tons of customization options</div>
+    </div>
+    <div class="cat" style="background-color: #4a8b4b; color: #222;">
+      <div class="container">
+        <div class="cat-title">Faded Textures</div>
+        <div class="cat-sub">Randomly generate textures that looked faded or worn. Choose a sample
+          to get started.
         </div>
-        <div class="cat" style="background-color: #1f53ce; color: #eee;">
-            <div class="container">
-                <div class="cat-title">Chaos Textures</div>
-                <div class="cat-sub">Randomly generate textures that are chaotic in nature. Some look like a topography
-                    of
-                    lakes or rivers. Others are like specs of dust. Still others remind me of drywall. Choose a sample
-                    to get started.
-                </div>
-                <div class="cat-presets">
-                    <a href="/chaos#pinkish"><img src={`/chaos/presets/pinkish.webp`}/></a>
-                    <a href="/chaos#bluewhite"><img src={`/chaos/presets/bluewhite.webp`}/></a>
-                    <a href="/chaos#peach"><img src={`/chaos/presets/peach.webp`}/></a>
-                </div>
-            </div>
-            <Waves color1="#1f53ce" color2="#ffb800"/>
+        <div class="cat-presets">
+          <a href="/static#pinkish"><img src={`/static/presets/pinkish.webp`}/></a>
+          <a href="/static#bluewhite"><img src={`/static/presets/bluewhite.webp`}/></a>
+          <a href="/static#peach"><img src={`/static/presets/peach.webp`}/></a>
+        </div>
+      </div>
+      <Waves color1="#4a8b4b" color2="#1f53ce"/>
 
+    </div>
+    <div class="cat" style="background-color: #1f53ce; color: #eee;">
+      <div class="container">
+        <div class="cat-title">Chaos Textures</div>
+        <div class="cat-sub">Randomly generate textures that are chaotic in nature. Some look like a topography
+          of
+          lakes or rivers. Others are like specs of dust. Still others remind me of drywall. Choose a sample
+          to get started.
         </div>
-        <div class="cat" style="background-color: #ffb800; color: #111">
-            <div class="container">
-                <div class="cat-title">Pattern Backgrounds</div>
-                <div class="cat-sub">Randomly generate background patterns. Choose a sample
-                    to get started.
-                </div>
-                <div class="cat-presets">
-                    <a href="/patterns#circleredblue"><img src={`/patterns/presets/circleredblue.webp`}/></a>
-                    <a href="/patterns#circleteal"><img src={`/patterns/presets/circleteal.webp`}/></a>
-                    <a href="/patterns#circleyellow"><img src={`/patterns/presets/circleyellow.webp`}/></a>
-                </div>
-            </div>
-            <Waves color1="#1f53ce" color2="var(--background-1)"/>
+        <div class="cat-presets">
+          <a href="/chaos#pinkish"><img src={`/chaos/presets/pinkish.webp`}/></a>
+          <a href="/chaos#bluewhite"><img src={`/chaos/presets/bluewhite.webp`}/></a>
+          <a href="/chaos#peach"><img src={`/chaos/presets/peach.webp`}/></a>
+        </div>
+      </div>
+      <Waves color1="#1f53ce" color2="#ffb800"/>
 
+    </div>
+    <div class="cat" style="background-color: #ffb800; color: #111">
+      <div class="container">
+        <div class="cat-title">Pattern Backgrounds</div>
+        <div class="cat-sub">Randomly generate background patterns. Choose a sample
+          to get started.
         </div>
-        <footer>
-            Brought to you by Random Bits
-        </footer>
-    </main>
+        <div class="cat-presets">
+          <a href="/patterns#circleredblue"><img src={`/patterns/presets/circleredblue.webp`}/></a>
+          <a href="/patterns#circleteal"><img src={`/patterns/presets/circleteal.webp`}/></a>
+          <a href="/patterns#circleyellow"><img src={`/patterns/presets/circleyellow.webp`}/></a>
+        </div>
+      </div>
+      <Waves color1="#1f53ce" color2="var(--background-1)"/>
+
+    </div>
+    <footer>
+      Brought to you by Random Bits
+    </footer>
+  </main>
 </Layout>
 
 <style>
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        text-align: center;
-    }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    .hero {
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    }
+  .hero {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
 
-    .hero-title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
 
-    .hero-sub {
-        font-size: 1.5rem;
-        font-weight: 400;
-    }
+  .hero-sub {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
 
-    .cat-title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
+  .cat-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
 
-    .cat-presets {
-        padding: 20px;
-    }
+  .cat-presets {
+    padding: 20px;
+  }
 
 
-    .cat a {
-        display: inline-block;
-        padding: 10px;
+  .cat a {
+    display: inline-block;
+    padding: 10px;
 
-    }
+  }
 
-    .cat img {
-        border-radius: 10px;
-        box-shadow: 0 0 10px 0 #000;
-    //border: 1px solid #000;
-    }
+  .cat img {
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #000;
+  //border: 1px solid #000;
+  }
 
-    footer {
-        margin-top: 100px;
-        margin-bottom: 100px;
-    }
+  footer {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
 
-    .cat {
-        padding-top: 50px;
-    }
+  .cat {
+    padding-top: 50px;
+  }
 </style>

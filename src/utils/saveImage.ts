@@ -1,5 +1,6 @@
 import {toBase64} from "js-base64";
 import {svgHeight, svgWidth} from "./svg-size.ts";
+import html2canvas from "html2canvas";
 
 export const copyClipboard = (svg: string) => {
   exportImage(svg, clipboardCopy);
@@ -20,6 +21,15 @@ export const downloadWebp = (svg: string, width?: number, height?: number) => {
       );
     };
   }, width, height);
+};
+
+export const downloadWebpFromEl = (el: HTMLElement) => {
+  html2canvas(el).then((canvas) => {
+    simulateDownload(
+        getFileName('webp'),
+        canvas.toDataURL('image/webp').replace('image/webp', 'image/octet-stream')
+    );
+  });
 };
 
 export const downloadSVG = (svg: string) => {

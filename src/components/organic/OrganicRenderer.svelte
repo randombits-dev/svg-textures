@@ -8,7 +8,7 @@
                         y1={fillRotationValues.y1 + '%'} y2={fillRotationValues.y2 + '%'}
                         gradientUnits="userSpaceOnUse">
             {#each $fillGradient.colors as color, i}
-                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$fillGradient.opacity || 1}/>
+                <stop offset={calcStopOffset(i)} stop-color={color} stop-opacity={$fillGradient.opacity}/>
             {/each}
         </linearGradient>
         <filter id="f1" x="0" y="0">
@@ -41,6 +41,7 @@
 
 
   import {organicStore} from "./organicStore.ts";
+  import {hex2rgba} from "../../utils/color-utils.js";
 
   const {
     texture,
@@ -99,10 +100,11 @@
 
     const length = $backgroundGradient.colors.length - 1;
     if (length > 0) {
-      backgroundGradientString = `linear-gradient(${$backgroundGradient.rotation}deg, ${$backgroundGradient.colors.map((color, i) => `${color} ${i / length * 100}%`).join(', ')})`;
+      backgroundGradientString = `linear-gradient(${$backgroundGradient.rotation}deg, ${$backgroundGradient.colors.map((color, i) => `rgba(${hex2rgba(color, $backgroundGradient.opacity).join(',')}) ${i / length * 100}%`).join(', ')})`;
     } else {
-      backgroundGradientString = $backgroundGradient.colors[0];
+      backgroundGradientString = `rgba(${hex2rgba($backgroundGradient.colors[0], $backgroundGradient.opacity).join(',')})`;
     }
+    console.log(backgroundGradientString);
   }
 
   const calcStopOffset = (i: number) => {

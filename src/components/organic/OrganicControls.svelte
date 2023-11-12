@@ -13,10 +13,16 @@
            min={organicRanges.density[0]} max={organicRanges.density[1]} step="0.01"
            bind:value={$density} on:mouseup={regenerate}>
 
-    <label for="size">Size</label>
-    <input name="size" type="range"
-           min={organicRanges.size[0]} max={organicRanges.size[1]} step="1"
-           bind:value={$size} on:mouseup={regenerate}>
+    <!--    <label for="size">Size</label>-->
+    <!--    <input name="size" type="range"-->
+    <!--           min={organicRanges.size[0]} max={organicRanges.size[1]} step="1"-->
+    <!--           bind:value={$size} on:mouseup={regenerate}>-->
+
+    <label for="scale">Scale</label>
+    <input name="scale" type="range"
+           min={organicRanges.scale[0]} max={organicRanges.scale[1]} step="10"
+           bind:value={$turbulenceScale}>
+
     <label for="turbulence">Chaos</label>
     <input name="turbulence" type="range"
            min={organicRanges.turbulance[0]} max={organicRanges.turbulance[1]} step="0.005"
@@ -51,11 +57,11 @@
   import {organicPresets} from "./organic-presets.ts";
   import {organicRanges} from "./organic-ranges.ts";
 
-  const {feature, turbulence, density, size, threeD, fillGradientStore, backgroundGradientStore} = organicStore;
+  const {feature, turbulence, turbulenceScale, density, size, threeD, fillGradientStore, backgroundGradientStore} = organicStore;
 
   const setDefaultSettings = () => {
     turbulence.set(0.05);
-    size.set(15);
+    size.set(30);
     density.set(0.8);
     threeD.set(5);
     feature.set('circles');

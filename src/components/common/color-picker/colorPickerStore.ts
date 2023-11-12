@@ -9,14 +9,6 @@ export type ColorValue = {
 }
 
 export const createColorPickerStore = () => {
-  // const initialHsv = hex2hsv(initialHex);
-  // const initialValue = {
-  //   hex: initialHex,
-  //   h: initialHsv[0],
-  //
-  //   s: initialHsv[1],
-  //   v: initialHsv[2]
-  // };
   const {subscribe, set, update} = writable<ColorValue>({hex: '#000000', h: 0, s: 0, v: 0});
 
   const setHex = (hex: string) => {

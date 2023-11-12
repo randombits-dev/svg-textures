@@ -1,8 +1,8 @@
-import {get, writable} from "svelte/store";
-import {createGradientStore} from "../common/color-picker/gradientStore.ts";
-import {generateShapes} from "../../utils/shape-gen/shape-gen.ts";
-import {randomDecimalBetween} from "../../utils/random.ts";
-import {organicRanges} from "./organic-ranges.ts";
+import {get, writable} from 'svelte/store';
+import {createGradientStore} from '../common/color-picker/gradientStore.ts';
+import {generateShapes} from '../../utils/shape-gen/shape-gen.ts';
+import {randomDecimalBetween} from '../../utils/random.ts';
+import {organicRanges} from './organic-ranges.ts';
 
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
@@ -13,7 +13,6 @@ const blur = writable(0);
 // const dropShadowY = writable(0);
 // const dropShadowBlur = writable(0);
 const threeD = writable(0);
-const backgroundColor = writable('#111111');
 const density = writable(0.2);
 const size = writable(30);
 
@@ -40,7 +39,6 @@ const serialize = () => {
     turbulenceScale: get(turbulenceScale),
     blur: get(blur),
     threeD: get(threeD),
-    backgroundColor: get(backgroundColor),
     density: get(density),
     size: get(size),
     fillGradient: get(fillGradientStore.gradient),
@@ -54,7 +52,6 @@ const deserialize = (obj: any) => {
   turbulenceScale.set(obj.turbulenceScale);
   blur.set(obj.blur);
   threeD.set(obj.threeD || 0);
-  backgroundColor.set(obj.backgroundColor);
   density.set(obj.density);
   size.set(obj.size);
   fillGradientStore.set(obj.fillGradient);
@@ -68,7 +65,6 @@ export const organicStore = {
   turbulenceScale,
   blur,
   threeD,
-  backgroundColor,
   density,
   size,
 
