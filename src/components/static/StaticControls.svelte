@@ -60,7 +60,7 @@
   const setDefaultSettings = () => {
     turbulence.set(0.05);
     size.set(15);
-    density.set(0.8);
+    density.set(0.1);
     feature.set('circles');
     backgroundGradientStore.setOpacity(0);
     regenerate();
