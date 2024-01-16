@@ -1,5 +1,5 @@
-import {svgHeight, svgWidth} from "../svg-size.ts";
-import {randomIntBetween} from "../random.ts";
+import {svgHeight, svgWidth} from '../svg-size.ts';
+import {randomIntBetween} from '../random.ts';
 
 type GenerateSquiggle = {
   size: number
@@ -9,18 +9,22 @@ type GenerateSquiggles = GenerateSquiggle & {
   density: number
 };
 
+const OUTSIDE_MARGIN = 500;
+
 export const generateSquiggle = ({size, density}: GenerateSquiggles) => {
+
   let path =
-      `M ` +
-      `${pointString()}` +
-      `C ` +
-      `${pointString()}` +
+    `M ` +
+    `${pointString()}` +
+    `C ` +
+    `${pointString()}` +
 
-      `${pointString()}` +
+    `${pointString()}` +
 
-      `${pointString()}`;
+    `${pointString()}`;
 
   const count = svgWidth * svgHeight * density / 1000;
+  console.log(svgWidth, svgHeight, density, count);
 
   for (let i = 0; i < count; i++) {
     path += ` S ` + `${pointString()}` + `${pointString()}`;
@@ -29,7 +33,7 @@ export const generateSquiggle = ({size, density}: GenerateSquiggles) => {
 };
 
 function getPoint() {
-  return [randomIntBetween(-200, svgWidth + 200), randomIntBetween(-200, svgHeight + 200)];
+  return [randomIntBetween(-OUTSIDE_MARGIN, svgWidth + OUTSIDE_MARGIN), randomIntBetween(-OUTSIDE_MARGIN, svgHeight + OUTSIDE_MARGIN)];
 }
 
 function pointString() {

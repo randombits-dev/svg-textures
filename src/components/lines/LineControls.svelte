@@ -19,13 +19,13 @@
 <section>
   <label for="density">Density</label>
   <input name="density" type="range"
-         min={patternRanges.density[0]} max={patternRanges.density[1]} step="0.01"
+         min={lineRanges.density[0]} max={lineRanges.density[1]} step="0.01"
          bind:value={$density} on:mouseup={regenerate}>
 
-  <label for="size">Size</label>
-  <input name="size" type="range"
-         min={patternRanges.size[0]} max={patternRanges.size[1]} step="1"
-         bind:value={$size} on:mouseup={regenerate}>
+  <!--  <label for="size">Size</label>-->
+  <!--  <input name="size" type="range"-->
+  <!--         min={lineRanges.size[0]} max={lineRanges.size[1]} step="1"-->
+  <!--         bind:value={$size} on:mouseup={regenerate}>-->
 
 </section>
 
@@ -37,16 +37,11 @@
 <!--<pre class="status">Value: {$turbulence}</pre>-->
 
 <section>
-  <label>Fill Color</label>
-  <GradientColor store={fillGradientStore}/>
-</section>
-
-<section>
   <label>Stroke Color</label>
   <GradientColor store={strokeGradientStore}/>
   <label for="stroke">Stroke Width</label>
   <input name="stroke" type="range"
-         min={patternRanges.stroke[0]} max={patternRanges.stroke[1]} step="1"
+         min={lineRanges.stroke[0]} max={lineRanges.stroke[1]} step="1"
          bind:value={$strokeWidth}>
 </section>
 
@@ -56,11 +51,11 @@
 
   <label for="turbulence">Chaos</label>
   <input name="turbulence" type="range"
-         min={patternRanges.turbulance[0]} max={patternRanges.turbulance[1]} step="0.005"
+         min={lineRanges.turbulance[0]} max={lineRanges.turbulance[1]} step="0.005"
          bind:value={$turbulence}>
 
   <label for="blur">Blur</label>
-  <input name="blur" type="range" min={patternRanges.blur[0]} max={patternRanges.blur[1]} step="1" bind:value={$blur}>
+  <input name="blur" type="range" min={lineRanges.blur[0]} max={lineRanges.blur[1]} step="1" bind:value={$blur}>
 </section>
 
 {#if import.meta.env.DEV}
@@ -69,9 +64,9 @@
 
 <script lang="ts">
   import GradientColor from "../common/color-picker/GradientColor.svelte";
-  import {patternsStore} from "./patternsStore.ts";
-  import {patternPresets} from "./pattern-presets.ts";
-  import {patternRanges} from "./pattern-ranges.ts";
+  import {lineStore} from "./lineStore.ts";
+  import {linePresets} from "./line-presets.ts";
+  import {lineRanges} from "./line-ranges.ts";
 
   const {
     feature,
@@ -81,32 +76,31 @@
     blur,
     threeD,
     strokeWidth,
-    fillGradientStore,
     backgroundGradientStore,
     strokeGradientStore
-  } = patternsStore;
+  } = lineStore;
 
   const setDefaultSettings = () => {
     size.set(60);
     density.set(0.5);
-    feature.set('circles');
+    feature.set('squiggle');
     regenerate();
   };
 
   const regenerate = () => {
-    patternsStore.regenerate();
+    lineStore.regenerate();
   };
 
   const regenRandom = () => {
-    patternsStore.regenerateRandom();
+    lineStore.regenerateRandom();
   };
 
 
   const hash = document.location.hash?.slice(1);
   if (hash) {
-    const preset = patternPresets.find(p => p.id === hash);
+    const preset = linePresets.find(p => p.id === hash);
     if (preset) {
-      patternsStore.deserialize(JSON.parse(JSON.stringify(preset)));
+      lineStore.deserialize(JSON.parse(JSON.stringify(preset)));
       regenerate();
     } else {
       setDefaultSettings();
@@ -116,7 +110,7 @@
   }
 
   const copySettings = () => {
-    void navigator.clipboard.writeText(patternsStore.serialize());
+    void navigator.clipboard.writeText(lineStore.serialize());
   };
 
 </script>

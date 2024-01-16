@@ -1,6 +1,6 @@
-import {generateCircles} from "./circle-gen.ts";
-import {generateBlobs} from "./blob-gen.ts";
-import {generateSquiggle} from "./squiggle-gen.ts";
+import {generateCircles} from './circle-gen.ts';
+import {generateBlobs} from './blob-gen.ts';
+import {generateSquiggle} from './squiggle-gen.ts';
 
 export type GenerateShapeOptions = {
   size: number;
