@@ -8,51 +8,51 @@
 <button on:click={regenRandom}><i class="fa-solid fa-dice"/> Random Settings</button>
 
 <section>
-    <label for="density">Density</label>
-    <input name="density" type="range"
-           min={organicRanges.density[0]} max={organicRanges.density[1]} step="0.01"
-           bind:value={$density} on:mouseup={regenerate}>
+  <label for="density">Density</label>
+  <input name="density" type="range"
+         min={organicRanges.density[0]} max={organicRanges.density[1]} step="0.01"
+         bind:value={$density} on:mouseup={regenerate}>
 
-    <!--    <label for="size">Size</label>-->
-    <!--    <input name="size" type="range"-->
-    <!--           min={organicRanges.size[0]} max={organicRanges.size[1]} step="1"-->
-    <!--           bind:value={$size} on:mouseup={regenerate}>-->
+  <!--    <label for="size">Size</label>-->
+  <!--    <input name="size" type="range"-->
+  <!--           min={organicRanges.size[0]} max={organicRanges.size[1]} step="1"-->
+  <!--           bind:value={$size} on:mouseup={regenerate}>-->
 
-    <label for="scale">Scale</label>
-    <input name="scale" type="range"
-           min={organicRanges.scale[0]} max={organicRanges.scale[1]} step="10"
-           bind:value={$turbulenceScale}>
+  <label for="scale">Scale</label>
+  <input name="scale" type="range"
+         min={organicRanges.scale[0]} max={organicRanges.scale[1]} step="10"
+         bind:value={$turbulenceScale}>
 
-    <label for="turbulence">Chaos</label>
-    <input name="turbulence" type="range"
-           min={organicRanges.turbulance[0]} max={organicRanges.turbulance[1]} step="0.005"
-           bind:value={$turbulence}>
+  <label for="turbulence">Chaos</label>
+  <input name="turbulence" type="range"
+         min={organicRanges.turbulance[0]} max={organicRanges.turbulance[1]} step="0.005"
+         bind:value={$turbulence}>
 </section>
 
 <section>
-    <label>Background Color</label>
-    <GradientColor store={backgroundGradientStore}/>
+  <label>Background Color</label>
+  <GradientColor store={backgroundGradientStore}/>
 </section>
 
 <!--<pre class="status">Value: {$turbulence}</pre>-->
 
 <section>
-    <label>Fill Color</label>
+  <label>Fill Color</label>
 
-    <GradientColor store={fillGradientStore}/>
+  <GradientColor store={fillGradientStore}/>
 </section>
 
 <section>
-    <label for="3d">3D Effect</label>
-    <input name="3d" type="range" min="0" max="15" step="0.1" bind:value={$threeD}>
+  <label for="3d">3D Effect</label>
+  <input name="3d" type="range" min="0" max="15" step="0.1" bind:value={$threeD}>
 </section>
 
 {#if import.meta.env.DEV}
-    <button on:click={copySettings}><i class="fa-solid fa-copy"/> Copy Settings</button>
+  <button on:click={copySettings}><i class="fa-solid fa-copy"/> Copy Settings</button>
 {/if}
 
 <script lang="ts">
-  import GradientColor from "../common/color-picker/GradientColor.svelte";
+  import GradientColor from "@/components//common/color-picker/GradientColor.svelte";
   import {organicStore} from "./organicStore.ts";
   import {organicPresets} from "./organic-presets.ts";
   import {organicRanges} from "./organic-ranges.ts";
@@ -97,14 +97,14 @@
 </script>
 
 <style>
-    section, button {
-        background-color: var(--background-1);
-        padding: 1rem;
-        margin-top: 1rem;
-        border-radius: 10px;
-    }
+  section, button {
+    background-color: var(--background-1);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+  }
 
-    button {
-        width: 100%;
-    }
+  button {
+    width: 100%;
+  }
 </style>

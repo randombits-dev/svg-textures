@@ -21,7 +21,7 @@
       <feDisplacementMap
         in2="turbulence"
         in="SourceGraphic"
-        scale={$turbulenceScale}
+        scale="50"
         xChannelSelector="R"
         yChannelSelector="G"/>
     </filter>
@@ -32,7 +32,7 @@
       <feDropShadow dx={$threeD} dy={$threeD} flood-color="#000" stdDeviation={0}/>
     </filter>
   </defs>
-  <g filter="url(#f1) url(#f2) url(#f3)" stroke="url(#strokeGradient)" fill="none">{@html $texture}</g>
+  <g filter="url(#f1) url(#f2) url(#f3)" stroke="url(#strokeGradient)" fill="none" stroke-dasharray={$gap}>{@html $texture}</g>
 </svg>
 
 <svelte:window on:mousedown={handleMouseDown}/>
@@ -44,10 +44,10 @@
   const {
     texture,
     turbulence,
-    turbulenceScale,
     blur,
     threeD,
     strokeWidth,
+    gap,
     backgroundGradientStore,
     strokeGradientStore,
   } = lineStore;
@@ -117,13 +117,10 @@
   svg {
     width: 100%;
     height: 100%;
-  }
-
-  svg#image-render {
-    /*mask: url(#svg-mask);*/
-    /*clip-path: inset(650px 0px 0px 520px);*/
-    /*clip-path: url(#svg-clip);*/
-    border-radius: 10px;
-
+    /*position: fixed;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
   }
 </style>

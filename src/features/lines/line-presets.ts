@@ -1,7 +1,7 @@
 export const linePresets = [
   {
     'id': 'bluered',
-    'feature': 'squiggle',
+    'feature': 'continuous',
     'turbulence': 0,
     'turbulenceScale': 1,
     'blur': 0,
@@ -14,9 +14,9 @@ export const linePresets = [
   },
   {
     'id': 'vibrant',
-    'feature': 'squiggle',
+    'feature': 'continuous',
     'turbulence': 0,
-    'turbulenceScale': 1,
+    'turbulenceScale': 0,
     'blur': 0,
     'threeD': 0,
     'density': 0.62,
@@ -27,7 +27,7 @@ export const linePresets = [
   },
   {
     'id': 'grey',
-    'feature': 'squiggle',
+    'feature': 'continuous',
     'turbulence': 0,
     'turbulenceScale': 1,
     'blur': 0,
@@ -40,7 +40,7 @@ export const linePresets = [
   },
   {
     'id': 'purpteal',
-    'feature': 'squiggle',
+    'feature': 'continuous',
     'turbulence': 0,
     'turbulenceScale': 1,
     'blur': 0,

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="viewport">
-    <PatternRenderer/>
+    <StaticRenderer/>
 
   </div>
 
@@ -25,14 +25,22 @@
         <button on:click={saveWebpThumbnail}>Thumb</button>
       {/if}
     </div>
+    <!--        <ButtonBarButton><span use:sveltePopper={{comp: PopoverMenu, props: {isMenu: true, items: copyPopoverItems}}}>Copy</span>-->
+    <!--        </ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={saveSvg}>Save SVG</ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={copySvg}>Copy SVG</ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={savePng}>Save PNG</ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={copyPng}>Copy PNG</ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={saveWebp}>Save Webp</ButtonBarButton>-->
+    <!--        <ButtonBarButton on:click={copySettings}>Copy Settings</ButtonBarButton>-->
   </div>
 
   <div class="controls controls-left scrollable">
-    <PatternControls/>
+    <StaticControls/>
   </div>
 
   <div class="controls controls-right scrollable">
-    <PatternPresets/>
+    <StaticPresets/>
   </div>
 </div>
 <!--<svelte:window on:resize={handleWindowResize} on:mousedown={handleMouseDown}/>-->
@@ -40,11 +48,11 @@
 
 <script lang="ts">
 
-  import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "../../utils/saveImage.ts";
-  import CopyButton from "../common/CopyButton.svelte";
-  import PatternRenderer from "./LineRenderer.svelte";
-  import PatternControls from "./LineControls.svelte";
-  import PatternPresets from "./LinePresets.svelte";
+  import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "@/utils/saveImage.ts";
+  import StaticControls from "./StaticControls.svelte";
+  import StaticRenderer from "./StaticRenderer.svelte";
+  import StaticPresets from "./StaticPresets.svelte";
+  import CopyButton from "@/components//common/CopyButton.svelte";
 
 
   const getSVGContent = () => {

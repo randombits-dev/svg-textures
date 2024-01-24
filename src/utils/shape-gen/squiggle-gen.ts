@@ -1,17 +1,9 @@
 import {svgHeight, svgWidth} from '../svg-size.ts';
 import {randomIntBetween} from '../random.ts';
 
-type GenerateSquiggle = {
-  size: number
-}
-
-type GenerateSquiggles = GenerateSquiggle & {
-  density: number
-};
-
 const OUTSIDE_MARGIN = 500;
 
-export const generateSquiggle = ({size, density}: GenerateSquiggles) => {
+export const generateSquiggle = ({density}) => {
 
   let path =
     `M ` +
