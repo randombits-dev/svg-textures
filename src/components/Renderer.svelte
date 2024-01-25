@@ -39,7 +39,7 @@
 <!--<svelte:body style:background-color={$backgroundColor}/>-->
 
 <script lang="ts">
-  import {lineStore} from "./lineStore.ts";
+  import {controlStore} from "../stores/controlStore.ts";
 
   const {
     texture,
@@ -50,7 +50,7 @@
     gap,
     backgroundGradientStore,
     strokeGradientStore,
-  } = lineStore;
+  } = controlStore;
 
   const {gradient: backgroundGradient} = backgroundGradientStore;
   const {gradient: strokeGradient} = strokeGradientStore;

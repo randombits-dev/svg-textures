@@ -28,11 +28,11 @@
   </div>
 
   <div class="controls controls-left scrollable">
-    <PatternControls/>
+    <PatternControls controls={featureConfig.controls}/>
   </div>
 
   <div class="controls controls-right scrollable">
-    <PatternPresets/>
+    <LinePresets presets={featureConfig.presets} path={featureConfig.presetPath}/>
   </div>
 </div>
 <!--<svelte:window on:resize={handleWindowResize} on:mousedown={handleMouseDown}/>-->
@@ -42,11 +42,15 @@
 
   import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "@/utils/saveImage.ts";
   import CopyButton from "@/components/common/CopyButton.svelte";
-  import PatternRenderer from "./LineRenderer.svelte";
-  import PatternControls from "./LineControls.svelte";
-  import PatternPresets from "./LinePresets.svelte";
+  import PatternRenderer from "@/components/Renderer.svelte";
+  import PatternControls from "@/components/Controls.svelte";
+  import {controlStore} from "../stores/controlStore.ts";
+  import {getFeatureConfig} from "../data/featureConfig.ts";
+  import LinePresets from "@/components/Presets.svelte";
 
+  const {feature} = controlStore;
 
+  $:featureConfig = getFeatureConfig($feature);
   const getSVGContent = () => {
     return new XMLSerializer().serializeToString(document.getElementById('image-render'));
   };

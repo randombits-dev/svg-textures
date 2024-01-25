@@ -1,0 +1,106 @@
+import type {IFeatureConfig} from './IFeatureConfig.ts';
+
+export const circlesConfig: IFeatureConfig = {
+  name: 'Circles',
+  controls: {
+    turbulance: [0, 0.05],
+    size: [10, 100],
+    sizeVariation: [0, 1],
+    density: [0.1, 0.9],
+    shadow: [0, 15],
+    blur: [0, 20],
+    stroke: [0, 25],
+    separation: [0, 2],
+    backgroundGradient: true,
+    strokeGradient: true,
+    threeD: true
+  },
+  presetPath: 'patterns',
+  presets: [
+    {
+      'id': 'circleredblue',
+      'feature': 'circles',
+      'turbulence': 0,
+      'turbulenceScale': 100,
+      'blur': 0,
+      'threeD': 0,
+      'backgroundColor': '#111111',
+      'density': 0.49,
+      'size': 82,
+      'fillGradient': {'rotation': 0, 'opacity': 0.55, 'colors': ['#e02157', '#1e53b3']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#e6e6e6']}
+    },
+    {
+      'id': 'circleteal',
+      'feature': 'circles',
+      'turbulence': 0,
+      'turbulenceScale': 100,
+      'blur': 0,
+      'threeD': 6.8,
+      'backgroundColor': '#111111',
+      'density': 0.74,
+      'size': 29,
+      'fillGradient': {'rotation': 135, 'opacity': 1, 'colors': ['#23a5b0', '#248fc2']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#262626']}
+    },
+    {
+      'id': 'circleyellow',
+      'feature': 'circles',
+      'turbulence': 0,
+      'turbulenceScale': 1,
+      'blur': 0,
+      'threeD': 0,
+      'backgroundColor': '#111111',
+      'density': 0.34,
+      'size': 56,
+      'fillGradient': {'rotation': 0, 'opacity': 0.05, 'colors': ['#e3dab6']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#111111']}
+    },
+    {
+      'id': 'circlewhiteblur',
+      'feature': 'circles',
+      'turbulence': 0,
+      'turbulenceScale': 100,
+      'blur': 4,
+      'threeD': 0,
+      'backgroundColor': '#111111',
+      'density': 0.83,
+      'size': 65,
+      'strokeWidth': 12,
+      'fillGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#e02157', '#000000']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#e6e6e6']},
+      'strokeGradient': {'rotation': 0, 'opacity': 0.15, 'colors': ['#000000']}
+    },
+    {
+      'id': 'circleyellowblur',
+      'feature': 'circles',
+      'turbulence': 0,
+      'turbulenceScale': 100,
+      'blur': 4,
+      'threeD': 0,
+      'backgroundColor': '#111111',
+      'density': 0.83,
+      'size': 65,
+      'strokeWidth': 12,
+      'fillGradient': {'rotation': 0, 'opacity': 0.05, 'colors': ['#e0d121', '#ff6d49']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#030303']},
+      'strokeGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#000000']}
+    },
+    {
+      'id': 'dashed',
+      'feature': 'dashed',
+      'turbulence': 0,
+      'turbulenceScale': 1,
+      'blur': 0,
+      'threeD': 0,
+      'density': 0.5,
+      'size': 60,
+      'sizeVariation': 1,
+      'separation': 1,
+      'strokeWidth': 10,
+      'fillGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#e02157', '#1e53b3']},
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#111111']},
+      'strokeGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#ffa2a2', '#13ccf0']}
+    },
+  ]
+};

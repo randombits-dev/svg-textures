@@ -1,5 +1,5 @@
-import {randomIntBetween} from "../random.ts";
-import {svgHeight, svgWidth} from "../svg-size.ts";
+import {randomIntBetween} from '@/utils/random.ts';
+import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
 
 let randomX: number;
 let randomY: number;
@@ -33,15 +33,14 @@ export const generateBlob = ({size}: GenerateBlob) => {
   return `<path d="${path}"></path>`;
 };
 
-
 const _toRad = (deg: number) => deg * (Math.PI / 180.0);
 
 const _divide = (count: number) => {
   var deg = 360 / count;
 
   return Array(count)
-      .fill("a")
-      .map((_, i) => i * deg);
+    .fill('a')
+    .map((_, i) => i * deg);
 };
 
 const _magicPoint = (value: number, min: number, max: number) => {
@@ -77,19 +76,19 @@ const _createPoints = (size: number, minGrowth: number, edgesCount: number) => {
 };
 
 const _createSvgPath = (points: any[]) => {
-  let svgPath = "";
+  let svgPath = '';
   var mid = [
     (points[0][0] + points[1][0]) / 2,
     (points[0][1] + points[1][1]) / 2,
   ];
-  svgPath += "M" + mid[0] + "," + mid[1];
+  svgPath += 'M' + mid[0] + ',' + mid[1];
 
   for (var i = 0; i < points.length; i++) {
     var p1 = points[(i + 1) % points.length];
     var p2 = points[(i + 2) % points.length];
     mid = [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2];
-    svgPath += "Q" + p1[0] + "," + p1[1] + "," + mid[0] + "," + mid[1];
+    svgPath += 'Q' + p1[0] + ',' + p1[1] + ',' + mid[0] + ',' + mid[1];
   }
-  svgPath += "Z";
+  svgPath += 'Z';
   return svgPath;
 };

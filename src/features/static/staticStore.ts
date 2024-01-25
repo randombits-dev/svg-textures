@@ -1,6 +1,6 @@
 import {get, writable} from 'svelte/store';
 import {createGradientStore} from '@/components//common/color-picker/gradientStore.ts';
-import {generateShapes} from '@/utils/shape-gen/shape-gen.ts';
+import {generateShapes} from '../../generators/shape-gen.ts';
 import {randomDecimalBetween} from '@/utils/random.ts';
 import {staticRanges} from './static-ranges.ts';
 

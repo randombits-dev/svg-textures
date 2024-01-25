@@ -1,5 +1,5 @@
-import {svgHeight, svgWidth} from '../svg-size.ts';
-import {randomIntBetween} from '../random.ts';
+import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
+import {randomIntBetween} from '@/utils/random.ts';
 
 const OUTSIDE_MARGIN = 500;
 

@@ -80,7 +80,6 @@
 
   const setDefaultSettings = () => {
     density.set(0.5);
-    feature.set('continuous');
     regenerate();
   };
 

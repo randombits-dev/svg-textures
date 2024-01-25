@@ -1,29 +1,28 @@
-import {svgHeight, svgWidth} from '../svg-size.ts';
-import {randomIntBetween} from '../random.ts';
+import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
+import {randomIntBetween} from '@/utils/random.ts';
 
-export const generateLinesAcross = ({density, curves}) => {
+export const generateLineCurves = ({density}) => {
 
   let path = '';
-  const count = svgWidth * svgHeight * density / 1000;
+  const count = svgWidth * svgHeight * density / 10000;
+
+  const topPoint = pointString(getTopPoint());
+  const bottomPoint = pointString(getBottomPoint());
 
   for (let i = 0; i < count; i++) {
-    path += getLine(curves);
+    path += getLine(topPoint, bottomPoint);
   }
   return `<path d="${path}"></path>`;
 };
 
-function getLine(curves) {
-  const positionA = randomIntBetween(0, 3);
-  while (true) {
-    const positionB = randomIntBetween(0, 3);
-    if (positionA !== positionB) {
-      if (curves) {
-        return ` M ${pointString(getPointByIndex(positionA))} Q ${pointString(getControlPoint())} ${pointString(
-          getPointByIndex(positionB))}`;
-      }
-      return ` M ${pointString(getPointByIndex(positionA))} L ${pointString(getPointByIndex(positionB))}`;
-    }
-  }
+function getLine(topPoint: string, bottomPoint: string) {
+  const pointA = pointString(getLeftPoint());
+  // const topPoint = pointString(getTopPoint());
+  // const bottomPoint = pointString(getBottomPoint());
+  const center = pointString([svgWidth / 2, svgHeight / 2]);
+  const pointB = pointString(getRightPoint());
+
+  return ` M ${pointA} C ${topPoint} ${bottomPoint} ${pointB}`;
 }
 
 function getPointByIndex(index: number): number[] {

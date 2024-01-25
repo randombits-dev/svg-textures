@@ -1,10 +1,13 @@
 import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
 import {randomIntBetween} from '@/utils/random.ts';
 
-export const generateLineCurves = ({density, orientation, rangeA, rangeB}: { density: number, orientation: 'horizontal' | 'vertical' }) => {
+export const generateLineCurves = ({density}: { density: number }) => {
 
   let path = '';
   const count = svgWidth * svgHeight * density / 10000;
+  const orientation = randomIntBetween(0, 1) ? 'horizontal' : 'vertical';
+  const rangeA = randomIntBetween(0, svgWidth / 2);
+  const rangeB = randomIntBetween(svgWidth / 2, svgWidth);
 
   let pointA;
   let pointB;
