@@ -1,6 +1,6 @@
 <div class="container">
   <div class="viewport">
-    <PatternRenderer/>
+    <TextRenderer/>
 
   </div>
 
@@ -28,11 +28,11 @@
   </div>
 
   <div class="controls controls-left scrollable">
-    <PatternControls controls={featureConfig.controls}/>
+    <Controls controls={featureConfig.controls}/>
   </div>
 
   <div class="controls controls-right scrollable">
-    <LinePresets presets={featureConfig.presets} path={featureConfig.presetPath}/>
+    <Presets presets={featureConfig.presets} path={featureConfig.presetPath}/>
   </div>
 </div>
 <!--<svelte:window on:resize={handleWindowResize} on:mousedown={handleMouseDown}/>-->
@@ -42,12 +42,12 @@
 
   import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "@/utils/saveImage.ts";
   import CopyButton from "@/components/common/CopyButton.svelte";
-  import PatternRenderer from "@/components/Renderer.svelte";
-  import PatternControls from "@/components/Controls.svelte";
+  import Controls from "@/components/Controls.svelte";
   import {controlStore} from "../stores/controlStore.ts";
   import {getFeatureConfig} from "../data/features/featureConfig.ts";
-  import LinePresets from "@/components/Presets.svelte";
+  import Presets from "@/components/Presets.svelte";
   import type {IFeatureConfig} from "@/data/features/IFeatureConfig.ts";
+  import TextRenderer from "@/components/TextRenderer2.svelte";
 
   const {feature} = controlStore;
 

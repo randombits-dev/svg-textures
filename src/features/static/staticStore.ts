@@ -17,7 +17,7 @@ const fillColor = writable('#ffffff');
 const backgroundGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#111111']});
 
 const regenerate = () => {
-  texture.set(generateShapes(get(feature), {density: get(density), size: get(size)}));
+  texture.set(generateShapes({feature: 'chaos', density: get(density), size: get(size), separation: 1, sizeVariation: 1}));
 };
 
 const regenerateRandom = () => {

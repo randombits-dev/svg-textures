@@ -24,10 +24,12 @@
       <rect fill="black" width="100%" height="100%" mask="url(#hole)"/>
     </mask>
   </defs>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"
-        fill="#fff" mask="url(#hole)">
-    /test
-  </text>
+  <rect fill="black" width="100%" height="100%" mask="url(#hole)"/>
+
+  <!--  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"-->
+  <!--        fill="#fff" mask="url(#hole)">-->
+  <!--    /test-->
+  <!--  </text>-->
 </svg>
 
 <!--<canvas id="canvas-output"></canvas>-->
@@ -65,6 +67,7 @@
   import {staticStore} from "./staticStore.ts";
   import {afterUpdate} from "svelte";
   import {hex2rgba} from "@/utils/color-utils.ts";
+  import {get} from "svelte/store";
 
   const {
     texture,
@@ -111,6 +114,7 @@
 
   let backgroundGradientString = '';
   $: {
+    console.log(get(texture));
     const length = $backgroundGradient.colors.length - 1;
     if (length > 0) {
       backgroundGradientString = `linear-gradient(${$backgroundGradient.rotation}deg, ${$backgroundGradient.colors.map((color, i) => `rgba(${hex2rgba(color, $backgroundGradient.opacity).join(',')}) ${i / length * 100}%`).join(', ')})`;
