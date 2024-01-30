@@ -28,7 +28,7 @@
       <feDisplacementMap
         in2="turbulence"
         in="SourceGraphic"
-        scale="50"
+        scale={$scale}
         xChannelSelector="R"
         yChannelSelector="G"/>
     </filter>
@@ -52,6 +52,7 @@
   const {
     texture,
     turbulence,
+    scale,
     blur,
     threeD,
     strokeWidth,

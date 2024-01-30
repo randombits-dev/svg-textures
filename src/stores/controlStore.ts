@@ -5,6 +5,7 @@ import {generateShapes} from '../generators/shape-gen.ts';
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
 const turbulence = writable(0);
+const scale = writable(50);
 const blur = writable(0);
 const threeD = writable(0);
 const density = writable(0.2);
@@ -34,6 +35,7 @@ const getValues = () => {
     blur: get(blur),
     threeD: get(threeD),
     turbulence: get(turbulence),
+    scale: get(scale),
     gap: get(gap),
     fontSize: get(fontSize),
     backgroundGradient: get(backgroundGradientStore.gradient),
@@ -48,6 +50,7 @@ const getValues = () => {
 const deserialize = (obj: any) => {
   feature.set(obj.feature);
   turbulence.set(obj.turbulence);
+  scale.set(obj.scale);
   blur.set(obj.blur);
   threeD.set(obj.threeD || 0);
   density.set(obj.density);
@@ -66,6 +69,7 @@ export const controlStore = {
   feature,
   texture,
   turbulence,
+  scale,
   blur,
   threeD,
   density,

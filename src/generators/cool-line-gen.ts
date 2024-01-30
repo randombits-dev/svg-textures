@@ -40,7 +40,8 @@ export const generateLineCurves = ({density}: { density: number }) => {
   for (let i = 0; i < count; i++) {
     path += getLine();
   }
-  return `<path d="${path}"></path><circle fill="#000" cx="${pointA[0]}" cy="${pointA[1]}" r="10"></circle><circle fill="#000"  cx="${pointB[0]}" cy="${pointB[1]}" r="10"></circle>`;
+  // <circle fill="#000" cx="${pointA[0]}" cy="${pointA[1]}" r="10"></circle><circle fill="#000"  cx="${pointB[0]}" cy="${pointB[1]}" r="10"></circle>
+  return `<path d="${path}"></path>`;
 };
 
 function getPointByIndex(index: number): number[] {

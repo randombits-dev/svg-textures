@@ -46,15 +46,21 @@ export const randomGradient = () => {
 };
 
 export const randomIntBetweenRandomToggle = (control: [number, number, number?]) => {
-  if (Math.random() < (control[2] || 1)) {
-    return randomDecimalBetween(control[0], control[1]);
+  if (control) {
+    if (Math.random() < (control[2] || 1)) {
+      return randomDecimalBetween(control[0], control[1]);
+    }
+    return control[0];
   }
   return 0;
 };
 
 export const randomDecimalBetweenRandomToggle = (control: [number, number, number?]) => {
-  if (Math.random() < (control[2] || 1)) {
-    return randomDecimalBetween(control[0], control[1]);
+  if (control) {
+    if (Math.random() < (control[2] || 1)) {
+      return randomDecimalBetween(control[0], control[1]);
+    }
+    return control[0];
   }
   return 0;
 };

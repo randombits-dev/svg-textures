@@ -43,14 +43,11 @@
 
 <script lang="ts">
 
-  import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "../../utils/saveImage.ts";
+  import {copyClipboard, copyWebpToClipboard, downloadPNG, downloadSVG, downloadWebp} from "@/utils/saveImage.ts";
   import CopyButton from "@/components/common/CopyButton.svelte";
   import PatternRenderer from "./FontRenderer.svelte";
   import PatternControls from "./FontControls.svelte";
   import PatternPresets from "./FontPresets.svelte";
-  import {fontStore} from "./fontStore.ts";
-
-  const {textContent} = fontStore;
 
 
   const getSVGContent = () => {

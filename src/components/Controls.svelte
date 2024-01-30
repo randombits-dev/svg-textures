@@ -2,13 +2,12 @@
 <button on:click={regenRandom}><i class="fa-solid fa-dice"/> Random Settings</button>
 
 <section>
-  <label>Style</label>
-  {$feature}
+  <label>Feature</label>
   <select bind:value={$feature} on:change={changeFeature}>
     <option value="circles">Circles</option>
     <option value="lines">Lines</option>
-    <option value="straight">Straight</option>
-    <option value="curves">Curves</option>
+    <!--    <option value="straight">Straight</option>-->
+    <!--    <option value="curves">Curves</option>-->
     <option value="waves">Waves</option>
     <option value="solar">Solar</option>
     <option value="chaos">Chaos</option>
@@ -66,7 +65,7 @@
     <GradientColor store={strokeGradientStore}/>
     {#if controls.stroke}
       <label for="stroke">Stroke Width</label>
-      <input name="stroke" type="range"
+      <input name="stroke" type="range" value={$strokeWidth}
              min={controls.stroke[0]} max={controls.stroke[1]} step="1"
              on:mouseup={(e) => strokeWidth.set(e.target.value)}>
     {/if}
@@ -81,13 +80,19 @@
 <section>
   {#if controls.threeD}
     <label for="3d">3D Effect</label>
-    <input name="3d" type="range" min="0" max="15" step="0.1" bind:value={$threeD}>
+    <input name="3d" type="range" min={controls.threeD[0]} max={controls.threeD[1]} step="0.1" bind:value={$threeD}>
   {/if}
   {#if controls.turbulance}
     <label for="turbulence">Chaos</label>
     <input name="turbulence" type="range"
            min={controls.turbulance[0]} max={controls.turbulance[1]} step="0.005"
            bind:value={$turbulence}>
+  {/if}
+  {#if controls.scale}
+    <label for="scale">Chaos Scale</label>
+    <input name="scale" type="range"
+           min={controls.scale[0]} max={controls.scale[1]} step="0.005"
+           bind:value={$scale}>
   {/if}
   {#if controls.blur}
     <label for="blur">Blur</label>
@@ -109,6 +114,7 @@
 
   const {
     feature,
+    scale,
     turbulence,
     density,
     blur,
@@ -137,8 +143,10 @@
   };
 
   const regenRandom = () => {
+    console.log(controls);
     // feature.set(randomElement(['circles', 'blobs']));
     turbulence.set(randomDecimalBetweenRandomToggle(controls.turbulance));
+    scale.set(randomIntBetweenRandomToggle(controls.scale));
     blur.set(randomIntBetweenRandomToggle(controls.blur));
     threeD.set(randomIntBetweenRandomToggle(controls.threeD));
     density.set(randomIntBetweenRandomToggle(controls.density));

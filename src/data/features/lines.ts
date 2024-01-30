@@ -3,16 +3,15 @@ import type {IFeatureConfig} from './IFeatureConfig.ts';
 export const linesConfig: IFeatureConfig = {
   name: 'Lines',
   controls: {
-    turbulance: [0, 0.05],
-    density: [0.01, 1],
-    shadow: [0, 15],
-    blur: [0, 20],
-    stroke: [1, 10],
-    gap: [0, 20],
+    turbulance: [0, 0.05, 0.1],
+    density: [0.01, 0.75],
+    blur: [0, 20, 0.1],
+    stroke: [1, 10, 0.1],
+    gap: [0, 20, 0.1],
     backgroundGradient: true,
     strokeGradient: true,
     fillGradient: false,
-    threeD: true
+    threeD: [0, 15, 0.1]
   },
   presetPath: 'lines',
   presets: [

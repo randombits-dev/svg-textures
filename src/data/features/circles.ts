@@ -103,22 +103,6 @@ export const circlesConfig: IFeatureConfig = {
       'fillGradient': {'rotation': 0, 'opacity': 0.05, 'colors': ['#e0d121', '#ff6d49']},
       'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#030303']},
       'strokeGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#000000']}
-    },
-    {
-      'id': 'dashed',
-      'feature': 'dashed',
-      'turbulence': 0,
-      'turbulenceScale': 1,
-      'blur': 0,
-      'threeD': 0,
-      'density': 0.5,
-      'size': 60,
-      'sizeVariation': 1,
-      'separation': 1,
-      'strokeWidth': 10,
-      'fillGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#e02157', '#1e53b3']},
-      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#111111']},
-      'strokeGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#ffa2a2', '#13ccf0']}
-    },
+    }
   ]
 };

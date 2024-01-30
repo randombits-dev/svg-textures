@@ -54,6 +54,7 @@
   let featureConfig: IFeatureConfig;
   $: {
     featureConfig = getFeatureConfig($feature);
+    console.log('featureConfig', featureConfig);
     if (featureConfig.presets.length > 0) {
       controlStore.deserialize(featureConfig.presets[0]);
     }

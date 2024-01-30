@@ -2,49 +2,49 @@
      bind:this={svgEl}
      viewBox="0 0 1920 1080"
 >
-    <defs>
-        <filter id="f1" x="0" y="0">
-            <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency={$turbulence}
-                    numOctaves="2"
-                    result="turbulence"/>
-            <feDisplacementMap
-                    in2="turbulence"
-                    in="SourceGraphic"
-                    scale={$turbulenceScale}
-                    xChannelSelector="R"
-                    yChannelSelector="G"/>
-        </filter>
-        <mask id="hole">
-            <rect x="0" y="0" width="100%" height="100%" fill="white"/>
-            <g filter="url(#f1)" fill="black">{@html $texture}</g>
-        </mask>
-        <mask id="hole2">
-            <rect fill="black" width="100%" height="100%" mask="url(#hole)"/>
-        </mask>
-    </defs>
-    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"
-          fill="#fff" mask="url(#hole)">
-        /test
-    </text>
+  <defs>
+    <filter id="f1" x="0" y="0">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency={$turbulence}
+        numOctaves="2"
+        result="turbulence"/>
+      <feDisplacementMap
+        in2="turbulence"
+        in="SourceGraphic"
+        scale={$turbulenceScale}
+        xChannelSelector="R"
+        yChannelSelector="G"/>
+    </filter>
+    <mask id="hole">
+      <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+      <g filter="url(#f1)" fill="black">{@html $texture}</g>
+    </mask>
+    <mask id="hole2">
+      <rect fill="black" width="100%" height="100%" mask="url(#hole)"/>
+    </mask>
+  </defs>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"
+        fill="#fff" mask="url(#hole)">
+    /test
+  </text>
 </svg>
 
 <!--<canvas id="canvas-output"></canvas>-->
 
 <div id="text-container" style:background={backgroundGradientString}>
-    <div id="text-renderer" contenteditable="false"
-         style:color={$fillColor}
-         style:-webkit-mask-image={`url("data:image/svg+xml, ${svgHtml}")`}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="500px" style="display: block"
-             viewBox="0 0 1200 675.000002" height="300px">
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"
-                  fill="#fff">
-                /test
-            </text>
-        </svg>
+  <div id="text-renderer" contenteditable="false"
+       style:color={$fillColor}
+       style:-webkit-mask-image={`url("data:image/svg+xml, ${svgHtml}")`}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="500px" style="display: block"
+         viewBox="0 0 1200 675.000002" height="300px">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px" stroke="#fff"
+            fill="#fff">
+        /test
+      </text>
+    </svg>
 
-    </div>
+  </div>
 </div>
 
 
@@ -63,8 +63,8 @@
 
 
   import {staticStore} from "./staticStore.ts";
-  import {hex2rgba} from "../../utils/color-utils.js";
   import {afterUpdate} from "svelte";
+  import {hex2rgba} from "@/utils/color-utils.ts";
 
   const {
     texture,
@@ -154,33 +154,33 @@
 
 <style>
 
-    svg {
-        width: 100%;
-        height: 100%;
-        /*display: none;*/
-    }
+  svg {
+    width: 100%;
+    height: 100%;
+    /*display: none;*/
+  }
 
-    svg#image-render {
-        border-radius: 10px;
+  svg#image-render {
+    border-radius: 10px;
 
-    }
+  }
 
-    #text-container {
-        width: 100%;
-        aspect-ratio: 16/9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  #text-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    #text-renderer {
-        text-align: center;
-        font-weight: 900;
-        font-size: 20cqw;
-    }
+  #text-renderer {
+    text-align: center;
+    font-weight: 900;
+    font-size: 20cqw;
+  }
 
-    /*#canvas-output {*/
-    /*    width: 100%;*/
-    /*    height: 300px;*/
-    /*}*/
+  /*#canvas-output {*/
+  /*    width: 100%;*/
+  /*    height: 300px;*/
+  /*}*/
 </style>

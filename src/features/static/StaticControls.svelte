@@ -13,7 +13,7 @@
   <!--           bind:value={$size} on:mouseup={regenerate}>-->
   <label for="scale">Scale</label>
   <input name="scale" type="range"
-         min={organicRanges.scale[0]} max={organicRanges.scale[1]} step="10"
+         min="50" max="100" step="10"
          bind:value={$turbulenceScale}>
 
   <label for="turbulence">Chaos</label>
@@ -48,7 +48,6 @@
   import {staticPresets} from "./static-presets.ts";
   import {staticRanges} from "./static-ranges.ts";
   import ColorPicker from "@/components//common/color-picker/ColorPicker.svelte";
-  import {organicRanges} from "../organic/organic-ranges.ts";
 
   const {
     feature, turbulence,

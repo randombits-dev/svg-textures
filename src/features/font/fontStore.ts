@@ -1,7 +1,7 @@
 import {get, writable} from 'svelte/store';
-import {createGradientStore} from '../common/color-picker/gradientStore.ts';
 import {generateSquiggle} from '../../generators/squiggle-gen.ts';
 import {generateLinesAcross} from '../../generators/line-across-gen.ts';
+import {createGradientStore} from '@/components/common/color-picker/gradientStore.ts';
 
 const feature = writable<string>('circles');
 const texture = writable<string[]>([]);
