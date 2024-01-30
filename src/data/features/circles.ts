@@ -3,17 +3,19 @@ import type {IFeatureConfig} from './IFeatureConfig.ts';
 export const circlesConfig: IFeatureConfig = {
   name: 'Circles',
   controls: {
-    turbulance: [0, 0.05],
+    turbulance: [0, 0.05, 0.1],
     size: [10, 100],
     sizeVariation: [0, 1],
     density: [0.1, 0.9],
-    shadow: [0, 15],
-    blur: [0, 20],
-    stroke: [0, 25],
+    shadow: [0, 15, 0.1],
+    blur: [0, 20, 0.1],
+    stroke: [0, 25, 0.1],
+    gap: [0, 50],
     separation: [0, 2],
     backgroundGradient: true,
     strokeGradient: true,
-    threeD: true
+    fillGradient: true,
+    threeD: [0, 15, 0.1],
   },
   presetPath: 'patterns',
   presets: [
@@ -29,6 +31,22 @@ export const circlesConfig: IFeatureConfig = {
       'size': 82,
       'fillGradient': {'rotation': 0, 'opacity': 0.55, 'colors': ['#e02157', '#1e53b3']},
       'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#e6e6e6']}
+    },
+    {
+      'id': 'gap',
+      'feature': 'circles',
+      'density': 0.62,
+      'size': 60,
+      'blur': 0,
+      'threeD': 0,
+      'turbulence': 0,
+      'gap': 20,
+      'backgroundGradient': {'rotation': 0, 'opacity': 1, 'colors': ['#000000']},
+      'strokeGradient': {'rotation': 90, 'opacity': 1, 'colors': ['#00ffeb', '#f21b9c']},
+      'fillGradient': {'rotation': 0, 'opacity': 0, 'colors': ['#1cd4cc']},
+      'strokeWidth': 1,
+      'sizeVariation': 0.5,
+      'separation': 1
     },
     {
       'id': 'circleteal',

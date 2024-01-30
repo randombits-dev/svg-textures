@@ -9,12 +9,19 @@ export const chaosConfig: IFeatureConfig = {
     density: [0.01, 1],
     shadow: [0, 15],
     blur: [0, 20],
+    stroke: [0, 25, 0.1],
+    gap: [0, 50],
+    separation: [0, 1],
+    backgroundGradient: true,
+    strokeGradient: false,
+    fillGradient: true,
+    threeD: [0, 15, 0.1],
   },
   presetPath: 'chaos',
   presets: [
     {
       'id': 'redblue',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.05,
       'turbulenceScale': 100,
       'blur': 0,
@@ -30,7 +37,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'blue',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.025,
       'turbulenceScale': 100,
       'blur': 0,
@@ -46,7 +53,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'bluewhite',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.02,
       'turbulenceScale': 100,
       'blur': 0,
@@ -62,7 +69,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'peach',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.043446030491312,
       'turbulenceScale': 100,
       'blur': 0,
@@ -75,7 +82,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'white',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.025,
       'turbulenceScale': 100,
       'blur': 0,
@@ -88,7 +95,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'black',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.025,
       'turbulenceScale': 100,
       'blur': 0,
@@ -101,7 +108,7 @@ export const chaosConfig: IFeatureConfig = {
     },
     {
       'id': 'lightredblue',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.03,
       'turbulenceScale': 100,
       'blur': 0,
@@ -113,7 +120,7 @@ export const chaosConfig: IFeatureConfig = {
       'backgroundGradient': {'rotation': 0, 'colors': ['#333333']}
     }, {
       'id': 'pinkish',
-      'feature': 'circles',
+      'feature': 'chaos',
       'turbulence': 0.025,
       'turbulenceScale': 100,
       'blur': 0,

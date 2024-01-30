@@ -3,14 +3,15 @@
 
 <section>
   <label>Style</label>
+  {$feature}
   <select bind:value={$feature} on:change={changeFeature}>
     <option value="circles">Circles</option>
     <option value="lines">Lines</option>
     <option value="straight">Straight</option>
     <option value="curves">Curves</option>
     <option value="waves">Waves</option>
-    <option value="dashedCircles">Dashed Circles</option>
-    <option value="chaosCircles">Chaos Circles</option>
+    <option value="solar">Solar</option>
+    <option value="chaos">Chaos</option>
   </select>
 </section>
 
@@ -52,7 +53,13 @@
   </section>
 {/if}
 
-<!--<pre class="status">Value: {$turbulence}</pre>-->
+{#if controls.fillGradient}
+  <section>
+    <label>Fill Color</label>
+    <GradientColor store={fillGradientStore}/>
+  </section>
+{/if}
+
 {#if controls.strokeGradient}
   <section>
     <label>Stroke Color</label>
@@ -95,6 +102,7 @@
 <script lang="ts">
   import GradientColor from "@/components/common/color-picker/GradientColor.svelte";
   import {controlStore} from "../stores/controlStore.ts";
+  import {randomDecimalBetweenRandomToggle, randomGradient, randomIntBetweenRandomToggle} from "@/utils/random.ts";
 
   export let controls = {};
   console.log(controls);
@@ -110,11 +118,10 @@
     size,
     backgroundGradientStore,
     strokeGradientStore,
+    fillGradientStore,
     separation,
     sizeVariation
   } = controlStore;
-
-  const {gradient} = strokeGradientStore;
 
   const setDefaultSettings = () => {
     density.set(0.5);
@@ -130,7 +137,19 @@
   };
 
   const regenRandom = () => {
-    controlStore.regenerateRandom();
+    // feature.set(randomElement(['circles', 'blobs']));
+    turbulence.set(randomDecimalBetweenRandomToggle(controls.turbulance));
+    blur.set(randomIntBetweenRandomToggle(controls.blur));
+    threeD.set(randomIntBetweenRandomToggle(controls.threeD));
+    density.set(randomIntBetweenRandomToggle(controls.density));
+    size.set(randomIntBetweenRandomToggle(controls.size));
+    sizeVariation.set(randomDecimalBetweenRandomToggle(controls.sizeVariation));
+    separation.set(randomDecimalBetweenRandomToggle(controls.separation));
+    strokeWidth.set(randomIntBetweenRandomToggle(controls.stroke));
+    // backgroundGradientStore.set(randomBackground());
+    if (controls.fillGradient) fillGradientStore.set(randomGradient());
+    if (controls.strokeGradient) strokeGradientStore.set(randomGradient());
+    regenerate();
   };
 
 

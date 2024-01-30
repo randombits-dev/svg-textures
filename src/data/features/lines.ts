@@ -11,13 +11,14 @@ export const linesConfig: IFeatureConfig = {
     gap: [0, 20],
     backgroundGradient: true,
     strokeGradient: true,
+    fillGradient: false,
     threeD: true
   },
   presetPath: 'lines',
   presets: [
     {
       'id': 'bluered',
-      'feature': 'line',
+      'feature': 'lines',
       'turbulence': 0,
       'turbulenceScale': 1,
       'blur': 0,
@@ -30,7 +31,7 @@ export const linesConfig: IFeatureConfig = {
     },
     {
       'id': 'vibrant',
-      'feature': 'line',
+      'feature': 'lines',
       'turbulence': 0,
       'turbulenceScale': 0,
       'blur': 0,
@@ -43,7 +44,7 @@ export const linesConfig: IFeatureConfig = {
     },
     {
       'id': 'grey',
-      'feature': 'line',
+      'feature': 'lines',
       'turbulence': 0,
       'turbulenceScale': 1,
       'blur': 0,
@@ -56,7 +57,7 @@ export const linesConfig: IFeatureConfig = {
     },
     {
       'id': 'purpteal',
-      'feature': 'line',
+      'feature': 'lines',
       'turbulence': 0,
       'turbulenceScale': 1,
       'blur': 0,

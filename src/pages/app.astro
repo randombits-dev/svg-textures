@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Lines from '../components/EditorContainer.svelte';
+import EditorContainer from '../components/EditorContainer.svelte';
 ---
 
 <Layout title="SVG Textures">
   <main>
-    <Lines client:only="svelte"/>
+    <EditorContainer client:only="svelte"/>
 
   </main>
 </Layout>

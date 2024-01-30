@@ -5,6 +5,13 @@
      style:stroke-width={$strokeWidth}
 >
   <defs>
+    <linearGradient id="fillGradient" x1={fillRotationValues.x1 + '%'} x2={fillRotationValues.x2 + '%'}
+                    y1={fillRotationValues.y1 + '%'} y2={fillRotationValues.y2 + '%'}
+                    gradientUnits="userSpaceOnUse">
+      {#each $fillGradient.colors as color, i}
+        <stop offset={calcStopOffsetFill(i)} stop-color={color} stop-opacity={$fillGradient.opacity}/>
+      {/each}
+    </linearGradient>
     <linearGradient id="strokeGradient" x1={strokeRotationValues.x1 + '%'} x2={strokeRotationValues.x2 + '%'}
                     y1={strokeRotationValues.y1 + '%'} y2={strokeRotationValues.y2 + '%'}
                     gradientUnits="userSpaceOnUse">
@@ -32,7 +39,8 @@
       <feDropShadow dx={$threeD} dy={$threeD} flood-color="#000" stdDeviation={0}/>
     </filter>
   </defs>
-  <g filter="url(#f1) url(#f2) url(#f3)" stroke="url(#strokeGradient)" fill="none" stroke-dasharray={$gap}>{@html $texture}</g>
+  <g filter="url(#f1) url(#f2) url(#f3)" stroke="url(#strokeGradient)" fill="url(#fillGradient)"
+     stroke-dasharray={$gap}>{@html $texture}</g>
 </svg>
 
 <svelte:window on:mousedown={handleMouseDown}/>
@@ -49,11 +57,13 @@
     strokeWidth,
     gap,
     backgroundGradientStore,
+    fillGradientStore,
     strokeGradientStore,
   } = controlStore;
 
   const {gradient: backgroundGradient} = backgroundGradientStore;
   const {gradient: strokeGradient} = strokeGradientStore;
+  const {gradient: fillGradient} = fillGradientStore;
 
 
   let svgEl: SVGSVGElement;
@@ -86,11 +96,18 @@
   };
 
   let strokeRotationValues = {x1: 0, x2: 0, y1: 100, y2: 100};
+  let fillRotationValues = {x1: 0, x2: 0, y1: 100, y2: 100};
 
   let backgroundGradientString = '';
   $: {
     const radians = $strokeGradient.rotation * (Math.PI / 180);
     strokeRotationValues = {
+      x1: 50 + Math.sin(radians) * 50,
+      y1: 50 + Math.cos(radians) * 50,
+      x2: 50 + Math.sin(radians + Math.PI) * 50,
+      y2: 50 + Math.cos(radians + Math.PI) * 50,
+    };
+    fillRotationValues = {
       x1: 50 + Math.sin(radians) * 50,
       y1: 50 + Math.cos(radians) * 50,
       x2: 50 + Math.sin(radians + Math.PI) * 50,
@@ -107,6 +124,11 @@
 
   const calcStopOffset = (i: number) => {
     const length = $strokeGradient.colors.length;
+    return length > 1 ? i / (length - 1) : 0;
+  };
+
+  const calcStopOffsetFill = (i: number) => {
+    const length = $fillGradient.colors.length;
     return length > 1 ? i / (length - 1) : 0;
   };
 

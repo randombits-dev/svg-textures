@@ -1,7 +1,7 @@
 import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
 import {randomIntBetween} from '@/utils/random.ts';
 
-export const generateCirclesDashed = ({density}) => {
+export const generateSolar = ({density}) => {
   const startX = svgWidth / 2;
   const startY = svgHeight / 2;
   const radius = svgWidth / 20;

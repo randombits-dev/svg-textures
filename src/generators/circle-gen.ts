@@ -1,4 +1,4 @@
-import {randomGoodColor, randomIntBetween} from '@/utils/random.ts';
+import {randomIntBetween} from '@/utils/random.ts';
 import {svgHeight, svgWidth} from '@/utils/svg-size.ts';
 
 type Options = {
@@ -37,7 +37,8 @@ export const generateCircles = ({density, size, separation, sizeVariation, rando
       const randomY = randomIntBetween(yMin, yMax);
       // console.log(randomX, randomY);
       if (!randomColors) {
-        paths.push(`<circle cx="${randomX}" cy="${randomY}" r="${randomSize}" fill="${randomGoodColor()}"/>`);
+        paths.push(`<circle cx="${randomX}" cy="${randomY}" r="${randomSize}" />`);
+        // paths.push(`<circle cx="${randomX}" cy="${randomY}" r="${randomSize}" fill="${randomGoodColor()}"/>`);
       } else {
         paths.push(`<circle cx="${randomX}" cy="${randomY}" r="${randomSize}"/>`);
 

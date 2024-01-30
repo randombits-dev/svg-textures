@@ -1,6 +1,5 @@
 import {get, writable} from 'svelte/store';
 import {createGradientStore} from '@/components/common/color-picker/gradientStore.ts';
-import {randomDecimalBetween} from '@/utils/random.ts';
 import {generateShapes} from '../generators/shape-gen.ts';
 
 const feature = writable<string>('circles');
@@ -17,6 +16,7 @@ const sizeVariation = writable(1);
 const separation = writable(1);
 const backgroundGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#eeeeee']});
 const strokeGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#111111']});
+const fillGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#111111']});
 
 const regenerate = () => {
   texture.set([generateShapes(getValues())]);
@@ -38,6 +38,7 @@ const getValues = () => {
     fontSize: get(fontSize),
     backgroundGradient: get(backgroundGradientStore.gradient),
     strokeGradient: get(strokeGradientStore.gradient),
+    fillGradient: get(fillGradientStore.gradient),
     strokeWidth: get(strokeWidth),
     sizeVariation: get(sizeVariation),
     separation: get(separation),
@@ -55,9 +56,10 @@ const deserialize = (obj: any) => {
   size.set(obj.size);
   fontSize.set(obj.fontSize);
   backgroundGradientStore.set(obj.backgroundGradient);
-  strokeGradientStore.set(obj.strokeGradient || {rotation: 0, opacity: 1, colors: ['#111111']});
-  sizeVariation.set(randomDecimalBetween(0, 1));
-  separation.set(randomDecimalBetween(0, 2));
+  strokeGradientStore.set(obj.strokeGradient || {rotation: 0, opacity: 0, colors: ['#111111']});
+  fillGradientStore.set(obj.fillGradient || {rotation: 0, opacity: 0, colors: ['#111111']});
+  sizeVariation.set(obj.sizeVariation || 0.5);
+  separation.set(obj.separation || 1);
 };
 
 export const controlStore = {
@@ -76,9 +78,9 @@ export const controlStore = {
 
   backgroundGradientStore,
   strokeGradientStore,
+  fillGradientStore,
 
   regenerate,
-  // regenerateRandom,
   serialize,
   deserialize
 };

@@ -45,12 +45,19 @@
   import PatternRenderer from "@/components/Renderer.svelte";
   import PatternControls from "@/components/Controls.svelte";
   import {controlStore} from "../stores/controlStore.ts";
-  import {getFeatureConfig} from "../data/featureConfig.ts";
+  import {getFeatureConfig} from "../data/features/featureConfig.ts";
   import LinePresets from "@/components/Presets.svelte";
+  import type {IFeatureConfig} from "@/data/features/IFeatureConfig.ts";
 
   const {feature} = controlStore;
 
-  $:featureConfig = getFeatureConfig($feature);
+  let featureConfig: IFeatureConfig;
+  $: {
+    featureConfig = getFeatureConfig($feature);
+    if (featureConfig.presets.length > 0) {
+      controlStore.deserialize(featureConfig.presets[0]);
+    }
+  }
   const getSVGContent = () => {
     return new XMLSerializer().serializeToString(document.getElementById('image-render'));
   };
