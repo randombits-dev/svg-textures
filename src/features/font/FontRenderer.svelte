@@ -33,20 +33,24 @@
     </filter>
   </defs>
   <g filter="url(#f1) url(#f2) url(#f3)" stroke="url(#strokeGradient)" fill="none">
-    <text x="50%" y="0" fill="url(#strokeGradient)" dominant-baseline="middle" text-anchor="middle" font-size={$size} font-family="Arial"
-          font-weight="bold" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-      {#each $textContent.split('\n') as line}
-        <tspan x="50%" dy="1.2em">{line}</tspan>
+    <text x="50%" y="0" fill="url(#strokeGradient)" dominant-baseline="hanging" text-anchor="middle" font-size={fontSize}
+          font-family="Arial"
+          stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      {#each $textContent.split('\n') as line, i}
+        <tspan x="50%" y={startY + fontSize * i}>{line}</tspan>
         {/each}
     </text>
   </g>
 </svg>
+
+<canvas bind:this={canvasEl} width="1920" height="1080" style="width: 100%"/>
 
 <svelte:window on:mousedown={handleMouseDown}/>
 <!--<svelte:body style:background-color={$backgroundColor}/>-->
 
 <script lang="ts">
   import {fontStore} from "./fontStore.ts";
+  import {getFontSize, svgHeight, svgWidth} from "@/utils/svg-size.ts";
 
   const {
     texture,
@@ -66,6 +70,7 @@
 
   let svgEl: SVGSVGElement;
   let viewportEl: HTMLDivElement;
+  let canvasEl: HTMLCanvasElement;
 
 
   let svgX = -200;
@@ -116,6 +121,65 @@
   let textLines;
   $: {
     textLines = $textContent.split('\n');
+  }
+
+  let fontSize = 300, startY = 200, usedSpace = 0;
+  $: {
+    ({size: fontSize, start: startY, usedSpace} = getFontSize($textContent));
+    console.log(fontSize, startY, usedSpace);
+
+
+    if (canvasEl) {
+
+      const ctx = canvasEl.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
+        const lines = $textContent.split('\n');
+        const margin = svgHeight / 10 / 1000;
+        const widthMargin = svgWidth - margin;
+        const heightMargin = svgHeight - margin;
+        let size = heightMargin / lines.length;
+        for (; size > 10; size -= 10) {
+          ctx.font = `${size}px Arial`;
+          let bad = false;
+          for (let i = 0; i < lines.length; i++) {
+            const text = lines[i];
+            const textWidth = ctx.measureText(text).width;
+            if (textWidth > widthMargin) {
+              bad = true;
+              break;
+            }
+          }
+          if (!bad) {
+            break;
+          }
+        }
+        // const lines = $textContent.split('\n');
+        // for (let i = 0; i < lines.length; i++) {
+        //   const text = lines[i];
+        //   const textWidth = ctx.measureText(text).width;
+        //   const textHeight = 50;
+        //   canvasEl.width = textWidth;
+        //   canvasEl.height = textHeight;
+        // }
+
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        const usedSpace = size * lines.length;
+        const start = (1080 - usedSpace) / 2;
+        for (let i = 0; i < lines.length; i++) {
+          const text = lines[i];
+          ctx.fillText(text, 960, start + size * i);
+        }
+
+        // canvasEl.width = 50;
+        // canvasEl.height = 50;
+
+        // ctx.measureText($textContent);
+      }
+    }
   }
 
   const calcStopOffset = (i: number) => {

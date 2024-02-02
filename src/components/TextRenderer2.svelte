@@ -48,9 +48,9 @@
 <svg bind:this={textOutputEl} xmlns="http://www.w3.org/2000/svg" width="500px" style="display: block"
      viewBox="0 0 1200 675.000002" height="300px">
   <!--  <rect x="0" y="0" width="100%" height="100%" fill="white"/>-->
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="500px"
-        fill="#000">
-    Hello World
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="800px"
+        fill="transparent" stroke="#000" stroke-width="10px">
+    W
   </text>
 
 </svg>
