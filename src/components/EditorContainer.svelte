@@ -1,6 +1,6 @@
 <div class="container">
   <div class="viewport">
-    <TextRenderer/>
+    <Renderer/>
 
   </div>
 
@@ -47,7 +47,7 @@
   import {getFeatureConfig} from "../data/features/featureConfig.ts";
   import Presets from "@/components/Presets.svelte";
   import type {IFeatureConfig} from "@/data/features/IFeatureConfig.ts";
-  import TextRenderer from "@/components/TextRenderer2.svelte";
+  import Renderer from "@/components/TextRenderer3.svelte";
 
   const {feature} = controlStore;
 

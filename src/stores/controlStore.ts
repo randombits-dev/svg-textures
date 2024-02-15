@@ -50,7 +50,7 @@ const getValues = () => {
 const deserialize = (obj: any) => {
   feature.set(obj.feature);
   turbulence.set(obj.turbulence);
-  scale.set(obj.scale);
+  scale.set(obj.scale || 100);
   blur.set(obj.blur);
   threeD.set(obj.threeD || 0);
   density.set(obj.density);

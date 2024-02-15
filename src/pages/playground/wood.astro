@@ -1,0 +1,26 @@
+<canvas width="500" height="500" id="canvas"></canvas>
+
+<script>
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+
+  var width = 500;
+  var height = 500;
+
+  ctx.fillStyle = 'black';
+  // ctx.fillRect(0, 0, width, height);
+
+  var img = new Image();
+  img.src = '/textures/wood.jpeg';
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, width, height);
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.font = '200px Arial';
+    const gradient = ctx.createLinearGradient(0, 0, width, 0);
+    gradient.addColorStop(0, "magenta");
+    gradient.addColorStop(0.5, "blue");
+    gradient.addColorStop(1, "red");
+    ctx.fillStyle = gradient;
+    ctx.fillText('Hello World', 0, 200);
+  };
+</script>

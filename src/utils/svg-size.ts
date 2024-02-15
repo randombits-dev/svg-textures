@@ -1,7 +1,7 @@
 export const svgWidth = 1920;
 export const svgHeight = 1080;
 
-export const getFontSize = (text: string, lineHeight: number = 1) => {
+export const getFontSize = (text: string, font: string, weight: string, lineHeight: number = 1) => {
   const canvasEl = document.createElement('canvas');
   canvasEl.width = svgWidth;
   canvasEl.height = svgHeight;
@@ -10,7 +10,7 @@ export const getFontSize = (text: string, lineHeight: number = 1) => {
   const margin = svgHeight / 10;
   const widthMargin = svgWidth - margin;
   const heightMargin = svgHeight - margin;
-  let size = heightMargin / lines.length;
+  let size = Math.floor(heightMargin / lines.length);
 
   const measureText = () => {
     for (let i = 0; i < lines.length; i++) {
@@ -23,7 +23,7 @@ export const getFontSize = (text: string, lineHeight: number = 1) => {
   };
 
   for (; size > 10; size -= 10) {
-    ctx.font = `${size}px Arial`;
+    ctx.font = `${weight} ${size}px "${font}"`;
     const fits = measureText();
     if (fits) {
       break;

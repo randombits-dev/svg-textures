@@ -4,6 +4,7 @@ export const wavesConfig: IFeatureConfig = {
   name: 'Waves',
   controls: {
     turbulance: [0, 0.05, 0.1],
+    scale: [50, 200],
     density: [0.01, 1],
     blur: [0, 20, 0.1],
     stroke: [1, 10, 0.1],

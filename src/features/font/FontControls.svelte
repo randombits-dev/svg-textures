@@ -16,11 +16,19 @@
 <section>
   <label>Text</label>
   <textarea rows="3" bind:value={$textContent}></textarea>
-  <label for="3d">Size</label>
-  <input name="3d" type="range" min="100" max="1000" step="10" bind:value={$size}>
-  <select>
-
+  <label for="weight">Weight</label>
+  <select name="weight" bind:value={$weight}>
+    <option value="normal">Normal</option>
+    <option value="bold">Bold</option>
   </select>
+  <label for="font">Font</label>
+  <select name="font" value={$font} on:change={changeFont}>
+    {#each fontList as font}
+      <option>{font}</option>
+      {/each}
+  </select>
+  <label for="texture">Texture</label>
+  <input name="texture" type="number" bind:value={$bg}>
 </section>
 
 <section>
@@ -64,9 +72,10 @@
   import {fontStore} from "./fontStore.ts";
   import {fontPresets} from "./font-presets.ts";
   import {fontRanges} from "./font-ranges.ts";
+  import fontList from "../../data/fonts.json";
+  import * as WebFont from "webfontloader";
 
   const {
-    feature,
     turbulence,
     density,
     blur,
@@ -75,8 +84,24 @@
     backgroundGradientStore,
     strokeGradientStore,
     textContent,
-    size
+    size,
+    font,
+    weight,
+    bg
   } = fontStore;
+
+  const changeFont = (e) => {
+    const newFont = e.target.value;
+    WebFont.load({
+      google: {
+        families: [newFont]
+      },
+      active: () => {
+        font.set(newFont);
+        // regenerate();
+      }
+    });
+  };
 
   const setDefaultSettings = () => {
     density.set(0.5);

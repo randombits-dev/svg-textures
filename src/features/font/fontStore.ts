@@ -15,6 +15,9 @@ const threeD = writable(0);
 const density = writable(0.2);
 const strokeWidth = writable(1);
 const textContent = writable('Hello World');
+const font = writable('Arial');
+const weight = writable('normal');
+const bg = writable(1);
 
 // const fillGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#e02157', '#1e53b3']});
 const backgroundGradientStore = createGradientStore({rotation: 0, opacity: 1, colors: ['#eeeeee']});
@@ -40,6 +43,8 @@ const serialize = () => {
     density: get(density),
     strokeWidth: get(strokeWidth),
     size: get(size),
+    font: get(font),
+    weight: get(weight),
     // fillGradient: get(fillGradientStore.gradient),
     backgroundGradient: get(backgroundGradientStore.gradient),
     strokeGradient: get(strokeGradientStore.gradient),
@@ -55,6 +60,8 @@ const deserialize = (obj: any) => {
   density.set(obj.density);
   strokeWidth.set(obj.strokeWidth || 0);
   size.set(obj.size || 0);
+  font.set(obj.font || 'Arial');
+  weight.set(obj.weight || 'normal');
   // fillGradientStore.set(obj.fillGradient);
   backgroundGradientStore.set(obj.backgroundGradient);
   strokeGradientStore.set(obj.strokeGradient || {rotation: 0, opacity: 1, colors: ['#111111']});
@@ -70,6 +77,9 @@ export const fontStore = {
   density,
   strokeWidth,
   size,
+  font,
+  weight,
+  bg,
 
   backgroundGradientStore,
   strokeGradientStore,

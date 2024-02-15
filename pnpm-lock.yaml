@@ -32,6 +32,14 @@ dependencies:
   svelte:
     specifier: ^4.2.9
     version: 4.2.9
+  webfontloader:
+    specifier: ^1.6.28
+    version: 1.6.28
+
+devDependencies:
+  font-previews:
+    specifier: ^1.0.0
+    version: 1.0.0
 
 packages:
 
@@ -1708,6 +1716,10 @@ packages:
     resolution: {integrity: sha512-xU99gDEnciIwJdGcBmNHnzTJ/w5AT+VFJOu6sTB6WM8diOYNA3Sa+K1DiEBQ7XH4QikQq3iFW1U+jRVcotQnBw==}
     engines: {node: '>=8'}
     dev: false
+
+  /font-previews@1.0.0:
+    resolution: {integrity: sha512-XxpIzVHFeej7uGmvL3fRmkwm7gypWeXdpvEiXSG0j/82unqy9KkECRMSbwJX+Ndqh4giaGg2kDURO7bCrf16LA==}
+    dev: true
 
   /fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -4112,6 +4124,10 @@ packages:
 
   /web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
+    dev: false
+
+  /webfontloader@1.6.28:
+    resolution: {integrity: sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==}
     dev: false
 
   /which-pm-runs@1.1.0:
